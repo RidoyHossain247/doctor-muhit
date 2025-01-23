@@ -1,0 +1,142 @@
+import React from "react";
+import { Box, Grid, Typography, Link, Container, styled } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+
+const Footer = ({ marginTop }) => {
+  const navigate = useNavigate();
+  const pages = ["HOME", "All DOCTORS", "ABOUT", "CONTACT"];
+  const handleMenuClick = (page) => {
+    if (page === "All DOCTORS") {
+      navigate("/all-docters");
+    } else if (page === "HOME") {
+      navigate("/");
+    } else if (page === "ABOUT") {
+      navigate("/about");
+    } else if (page === "CONTACT") {
+      navigate("/contact");
+    }
+  };
+
+  return (
+    <StyledContainer>
+      <MainBox>
+        <Grid container spacing={2} justifyContent="center">
+          <Grid item xs={12} sm={6} md={6}>
+            <LogoBox>
+              <LogoWrapper>
+                <img
+                  style={{ height: "36px", width: "150px" }}
+                  src="/images/logo-footer.png"
+                  alt="Logo"
+                />
+              </LogoWrapper>
+            </LogoBox>
+            <DescriptionText>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s, when an unknown printer took a galley of
+              type and scrambled it to make a type specimen book.
+            </DescriptionText>
+          </Grid>
+
+          {/* Company Links */}
+          <Grid item xs={12} sm={3} md={3}>
+            <SectionTitle>COMPANY</SectionTitle>
+            <LinkWrapper>
+              {pages.map((page) => (
+                <StyledLink key={page} onClick={() => handleMenuClick(page)}>
+                  {page}
+                </StyledLink>
+              ))}
+            </LinkWrapper>
+          </Grid>
+
+          {/* Contact Information */}
+          <Grid item xs={12} sm={6} md={3}>
+            <SectionTitle>GET IN TOUCH</SectionTitle>
+            <ContactInfo>+1-212-456-7890</ContactInfo>
+            <ContactInfo>greatstackdev@gmail.com</ContactInfo>
+          </Grid>
+        </Grid>
+
+        {/* Footer Bottom */}
+        <FooterBottom>
+          <FooterText>
+            Copyright © 2024 GreatStack - All Right Reserved.
+          </FooterText>
+        </FooterBottom>
+      </MainBox>
+    </StyledContainer>
+  );
+};
+
+export default Footer;
+
+const StyledContainer = styled(Container)(({ theme }) => ({
+  backgroundColor: "#f9f9f9",
+}));
+
+const MainBox = styled(Box)(({ theme }) => ({
+  padding: "40px 20px",
+  borderTop: "1px solid #e0e0e0",
+  marginTop: "100px",
+}));
+
+const LogoBox = styled(Box)(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  marginBottom: theme.spacing(2),
+}));
+
+const LogoWrapper = styled(Box)(({ theme }) => ({
+  cursor: "pointer",
+}));
+
+const DescriptionText = styled(Typography)(({ theme }) => ({
+  color: "#4B5563",
+  lineHeight: "1.6",
+  width: "90%",
+  variant: "body2",
+}));
+
+const SectionTitle = styled(Typography)(({ theme }) => ({
+  color: "#1a1a1a",
+  fontWeight: "bold",
+  marginBottom: theme.spacing(2),
+  variant: "h6",
+}));
+
+const LinkWrapper = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  gap: theme.spacing(1),
+}));
+
+const StyledLink = styled(Link)(({ theme }) => ({
+  color: "#666",
+  fontSize: "14px",
+  textDecoration: "none",
+  cursor: "pointer",
+  "&:hover": {
+    color: "#3f51b5",
+  },
+}));
+
+const ContactInfo = styled(Typography)(({ theme }) => ({
+  color: "#666",
+  fontSize: "14px",
+  marginBottom: theme.spacing(1),
+  variant: "body2",
+}));
+
+const FooterBottom = styled(Box)(({ theme }) => ({
+  borderTop: "1px solid #e0e0e0",
+  marginTop: theme.spacing(7.5),
+  paddingTop: theme.spacing(2.5),
+  textAlign: "center",
+}));
+
+const FooterText = styled(Typography)(({ theme }) => ({
+  color: "#888",
+  variant: "caption",
+}));

@@ -31,7 +31,7 @@ const HeroItem = () => {
               </Box>
               <SubTitleText>
                 Simply browse through our extensive list of trusted doctors,
-                schedule your appointment hassle-free.
+                schedule your appointment hassle-free.sagar
               </SubTitleText>
             </Box>
             {/* Button Ekta hobe component e */}

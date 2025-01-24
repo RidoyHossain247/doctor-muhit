@@ -57,21 +57,21 @@ const StyledItem = styled(Box)(({ theme }) => ({
 }));
 
 const StyledCircle = styled(Box)(({ theme }) => ({
-  width: "60px",
-  height: "60px",
+  height: "125px",
+  width: "125px",
   background: "linear-gradient(180deg, #AFC1DC 0%, #E2E5ED 100%)",
   borderRadius: "50%",
   boxShadow: "0 2px 6px rgba(0,0,0,0.1)",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  [theme.breakpoints.up("md")]: {
-    width: "125px",
-    height: "125px",
-  },
-  [theme.breakpoints.up("sm")]: {
+  [theme.breakpoints.down("md")]: {
     width: "80px",
     height: "80px",
+  },
+  [theme.breakpoints.down("sm")]: {
+    width: "60px",
+    height: "60px",
   },
 }));
 

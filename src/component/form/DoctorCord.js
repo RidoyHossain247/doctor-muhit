@@ -57,15 +57,10 @@ const CardWapper = styled(Card)(({ theme }) => ({
 }));
 const ImageWapper = styled(Box)(({ theme }) => ({
   backgroundColor: "#EAEFFF",
-  // display: "flex",
-  // justifyContent: "center",
-  // padding: "20px 0",
-  // overflow: "hidden",
 }));
 const Image = styled("img")(({ theme }) => ({
   width: "auto",
   height: "250px",
   display: "block",
   margin: "auto",
-  // marginBottom: "-40px",
 }));

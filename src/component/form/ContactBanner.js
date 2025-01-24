@@ -6,9 +6,15 @@ function ContactBanner() {
   return (
     <TitleBox>
       <Typography
-        sx={{ textAlign: "center", fontSize: "30px", fontWeight: 500 }}
+        sx={{
+          textAlign: "center",
+          fontSize: "28px",
+          fontWeight: 500,
+          textTransform: "uppercase",
+          letterSpacing: "1px",
+        }}
       >
-        Contact <span style={{ color: "black", fontWeight: 600 }}>Us</span>{" "}
+        Contact <span style={{ color: "#000000", fontWeight: 600 }}>Us</span>
       </Typography>
       <Container>
         <MainBox>
@@ -16,7 +22,7 @@ function ContactBanner() {
             <img src="./images/contact_image.png" alt="Doctors" />
           </ImageBox>
           <ContentBox>
-            <Subtitle>Our OFFICE</Subtitle>
+            <Subtitle>Our Office</Subtitle>
             <Paragraph>
               54709 Willms Station
               <br /> Suite 350, Washington, USA
@@ -25,9 +31,11 @@ function ContactBanner() {
               <br />
               Email: greatstackdev@gmail.com
             </Paragraph>
-            <Subtitle>Careers at PRESCRIPTO</Subtitle>
+            <Subtitle>Careers at Prescripto</Subtitle>
             <Paragraph>Learn more about our teams and job openings.</Paragraph>
-            <Button variant="outlined">Explore Jobs</Button>
+            <ButtonBox>
+              <Button variant="outlined">Explore Jobs</Button>
+            </ButtonBox>
           </ContentBox>
         </MainBox>
       </Container>
@@ -36,66 +44,60 @@ function ContactBanner() {
 }
 
 export default ContactBanner;
+
 const TitleBox = styled(Box)(({ theme }) => ({
-  marginTop: "100px",
-  marginBottom: "50px",
-  zIndex: 1,
+  marginTop: "80px",
+  marginBottom: "40px",
 }));
+
 const MainBox = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
-  justifyContent: "center",
-  gap: theme.spacing(4),
-  marginTop: "60px",
-  borderRadius: "8px",
-  overflow: "hidden",
-  textAlign: "center",
-  padding: "0 100px",
+
+  marginTop: "40px",
+  padding: "0",
   [theme.breakpoints.down("md")]: {
     flexDirection: "column",
     alignItems: "center",
-    padding: "0",
+    textAlign: "center",
   },
 }));
 
 const ImageBox = styled(Box)(({ theme }) => ({
-  width: "300px",
-  height: "300px",
+  width: "50%",
   display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
+  justifyContent: "flex-end",
   img: {
-    width: "100%",
-    height: "100%",
-    objectFit: "cover",
+    width: "60%",
+    height: "auto",
     borderRadius: "8px",
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+      marginBottom: theme.spacing(4),
+    },
   },
   [theme.breakpoints.down("md")]: {
     width: "100%",
-    height: "auto",
+    marginBottom: theme.spacing(4),
   },
 }));
 
 const ContentBox = styled(Box)(({ theme }) => ({
   flex: 1,
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "center", // Center content vertically within the box
+  padding: "0 20px",
   textAlign: "left",
-  color: "#1F2937",
   [theme.breakpoints.down("md")]: {
+    padding: "0",
     textAlign: "center",
   },
 }));
 
 const Subtitle = styled(Typography)(({ theme }) => ({
-  fontSize: "16px",
+  fontSize: "18px",
   fontWeight: "600",
   color: "#000000",
   marginBottom: theme.spacing(2),
-  [theme.breakpoints.down("sm")]: {
-    fontSize: "14px",
-  },
+  textTransform: "uppercase",
 }));
 
 const Paragraph = styled(Typography)(({ theme }) => ({
@@ -103,14 +105,13 @@ const Paragraph = styled(Typography)(({ theme }) => ({
   color: "#4A5568",
   lineHeight: 1.8,
   marginBottom: theme.spacing(2),
-  [theme.breakpoints.down("sm")]: {
-    fontSize: "14px",
-    lineHeight: 1.2,
-  },
 }));
-const Btn = styled(Button)(({ theme }) => ({
-  padding: "15px 10px",
-  color: "#1F2937",
-  fontSize: "16px",
-  width: "20%",
+
+const ButtonBox = styled(Box)(({ theme }) => ({
+  marginTop: theme.spacing(2),
+  display: "flex",
+  justifyContent: "center",
+  [theme.breakpoints.up("md")]: {
+    justifyContent: "flex-start",
+  },
 }));

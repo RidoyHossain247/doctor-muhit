@@ -49,7 +49,6 @@ const SigninLayout = () => {
   return (
     <Container>
       <MainBoxWrapper>
-        <NavBar></NavBar>
         <BoxWrapper>
           <Box sx={{ padding: "32px 24px" }}>
             <FormMainText
@@ -103,7 +102,6 @@ const SigninLayout = () => {
           </Box>
         </BoxWrapper>
       </MainBoxWrapper>
-      <Footer marginTop={"0px"} />
     </Container>
   );
 };

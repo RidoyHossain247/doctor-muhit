@@ -53,7 +53,6 @@ const LoginLayOut = ({ child }) => {
   return (
     <Container>
       <MainBoxWrapper>
-        <NavBar />
         <BoxWrapper>
           <Box sx={{ padding: "32px 24px" }}>
             <FormMainText
@@ -118,7 +117,6 @@ const LoginLayOut = ({ child }) => {
           </Box>
         </BoxWrapper>
       </MainBoxWrapper>
-      <Footer />
     </Container>
   );
 };

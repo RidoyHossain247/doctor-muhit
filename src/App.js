@@ -1,24 +1,29 @@
 import "./App.css";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/HomePage";
-import Alldoctor from "./pages/AllDoctors";
+import DoctorApoint from "./pages/DoctorApoint";
 import About from "./pages/About";
 import Contact from "./pages/ContactUs";
 import SignUP from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import NavBar from "./component/form/Navbar";
+import Footer from "./component/form/Footer";
+import AllDoctors from "./pages/AllDoctors";
 
 function App() {
   return (
     <Router>
+      <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/all-docters" element={<Alldoctor />} />
+        <Route path="/all-docters" element={<AllDoctors />} />
+        <Route path="/Doctor-Apoint" element={<DoctorApoint />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/sign-up" element={<SignUP />} />
         <Route path="/sign-in" element={<SignIn />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }

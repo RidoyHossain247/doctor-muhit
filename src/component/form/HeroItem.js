@@ -5,6 +5,8 @@ import {
   Box,
   Grid,
   styled,
+  Avatar,
+  AvatarGroup,
 } from "@mui/material";
 import React from "react";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
@@ -13,7 +15,7 @@ import { useNavigate } from "react-router-dom";
 const HeroItem = () => {
   const navigate = useNavigate();
   const handleClickDoc = () => {
-    navigate("/all-docters");
+    navigate("/Doctor-Apoint");
   };
   return (
     <Container>
@@ -24,10 +26,17 @@ const HeroItem = () => {
             <Box display="flex" alignItems="center" sx={{ marginBottom: 2 }}>
               <Box sx={{ display: { xs: "none", md: "block" } }}>
                 {/* imgta bosbe na mui theke avatar use korte hobe */}
-                <TextImg
-                  src="./images/group_profiles.png"
-                  alt="Group Profiles"
-                />
+                <AvatarGroup spacing="small" total={10}>
+                  <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                  <Avatar
+                    alt="Travis Howard"
+                    src="/static/images/avatar/2.jpg"
+                  />
+                  <Avatar
+                    alt="Agnes Walker"
+                    src="/static/images/avatar/4.jpg"
+                  />
+                </AvatarGroup>
               </Box>
               <SubTitleText>
                 Simply browse through our extensive list of trusted doctors,
@@ -35,10 +44,12 @@ const HeroItem = () => {
               </SubTitleText>
             </Box>
             {/* Button Ekta hobe component e */}
-            <HeroButton onClick={handleClickDoc}>
+            <HeroButton
+              onClick={handleClickDoc}
+              endIcon={<ArrowRightAltIcon />}
+            >
               Book appointment
               {/* mui theke button use korte hobe */}
-              <ArrowRightAltIcon />
             </HeroButton>
           </Grid>
 
@@ -88,6 +99,7 @@ const SubTitleText = styled(Typography)(({ theme }) => ({
   fontWeight: 400,
   color: "#FFFFFF",
   marginTop: "15px",
+  marginLeft: "4px",
 }));
 const HeroButton = styled(Button)(({ theme }) => ({
   backgroundColor: "white",

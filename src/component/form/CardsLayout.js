@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Container, Grid, Button, Box, styled } from "@mui/material";
+import { Container, Grid, Box } from "@mui/material";
 import DoctorCard from "./DoctorCord";
+import MoreButton from "./MoreButton";
 
 const CardsLayout = () => {
   // State to control the number of items shown
@@ -85,21 +86,10 @@ const CardsLayout = () => {
       </Grid>
 
       {visibleItems < doctorCards.length && (
-        <Box sx={{ textAlign: "center", marginTop: "20px" }}>
-          <Btn variant="contained" onClick={handleLoadMore}>
-            More
-          </Btn>
-        </Box>
+        <MoreButton onClick={handleLoadMore} />
       )}
     </Container>
   );
 };
 
 export default CardsLayout;
-const Btn = styled(Button)(({ theme }) => ({
-  backgroundColor: "#5F6FFF",
-  color: "#FFFFFF",
-  textTransform: "none",
-  borderRadius: "20px",
-  padding: "10px 50px",
-}));

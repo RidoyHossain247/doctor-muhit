@@ -3,10 +3,10 @@ import React, { useState } from "react";
 import { Container, styled } from "@mui/system";
 
 import { useNavigate } from "react-router-dom";
-import FormEmail from "./form/FormEmail";
-import FormMainText from "./form/FormMainText";
-import NavBar from "./form/Navbar";
-import Footer from "./form/Footer";
+import FormEmail from "./FormEmail";
+import FormMainText from "./FormMainText";
+import NavBar from "./Navbar";
+import Footer from "./Footer";
 
 const SigninLayout = () => {
   const [email, setEmail] = useState("");

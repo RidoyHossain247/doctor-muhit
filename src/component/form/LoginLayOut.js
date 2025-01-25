@@ -28,14 +28,15 @@ const LoginLayOut = ({ child }) => {
     if (!name.trim()) {
       setNameError("Write your Full Name");
       valid = false;
-    } else if (!email.trim()) {
+    }
+    if (!email.trim()) {
       setEmailError("Write your email or username");
       valid = false;
     } else if (!validateEmail(email)) {
-      setEmailError("Invalid email or username");
+      setEmailError("Invalid email");
       valid = false;
     } else {
-      setEmailError("");
+      setEmailError(email);
     }
 
     if (!password.trim()) {
@@ -46,6 +47,7 @@ const LoginLayOut = ({ child }) => {
     }
 
     if (valid) {
+      console.log("Full Name:", name);
       console.log("Email/Username:", email);
       console.log("Password:", password);
     }
@@ -81,7 +83,7 @@ const LoginLayOut = ({ child }) => {
                 setEmail(e.target.value);
                 setEmailError("");
               }}
-              type="email"
+              type=""
             />
             <FormEmail
               Title="Password"

@@ -9,10 +9,12 @@ import SignIn from "./pages/SignIn";
 import NavBar from "./component/form/Navbar";
 import Footer from "./component/form/Footer";
 import AllDoctors from "./pages/AllDoctors";
+import ScrollToTop from "./component/ScrollTop";
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />

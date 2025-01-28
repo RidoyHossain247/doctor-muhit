@@ -10,23 +10,35 @@ import NavBar from "./component/form/Navbar";
 import Footer from "./component/form/Footer";
 import AllDoctors from "./pages/AllDoctors";
 import ScrollToTop from "./component/ScrollTop";
+import NavbarLogIn from "./component/form/NavbarLogIn";
+import AdminPanel from "./pages/AdminPanel";
 
 function App() {
   return (
-    <Router>
-      <ScrollToTop />
-      <NavBar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/all-docters" element={<AllDoctors />} />
-        <Route path="/Doctor-Apoint" element={<DoctorApoint />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/sign-up" element={<SignUP />} />
-        <Route path="/sign-in" element={<SignIn />} />
-      </Routes>
-      <Footer />
-    </Router>
+    <>
+      <Router>
+        <ScrollToTop />
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/all-docters" element={<AllDoctors />} />
+          <Route path="/Doctor-Apoint" element={<DoctorApoint />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/sign-up" element={<SignUP />} />
+          <Route path="/sign-in" element={<SignIn />} />
+        </Routes>
+        <Footer />
+      </Router>
+      {/* <Router>
+        <ScrollToTop />
+        <NavbarLogIn />
+        <Routes>
+         <Route path="/" element={<AdminPanel />} />
+        </Routes>
+        <Footer />
+      </Router> */}
+    </>
   );
 }
 

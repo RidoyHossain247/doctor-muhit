@@ -14,6 +14,7 @@ const LoginLayOut = ({ child }) => {
   const [emailError, setEmailError] = useState("");
   const [nameError, setNameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+
   const validateEmail = (email) => {
     const regex = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{3,}$/;
     return regex.test(email);
@@ -28,28 +29,28 @@ const LoginLayOut = ({ child }) => {
     if (!name.trim()) {
       setNameError("Write your Full Name");
       valid = false;
+    } else {
+      setNameError("");
+      console.log("Name:", name);
     }
     if (!email.trim()) {
-      setEmailError("Write your email or username");
-      valid = false;
+      setEmailError("Write your email");
     } else if (!validateEmail(email)) {
-      setEmailError("Invalid email");
-      valid = false;
+      setEmailError("Invalid email address");
     } else {
-      setEmailError(email);
+      console.log("Email:", email);
+      setEmailError("");
     }
 
     if (!password.trim()) {
       setPasswordError("Write your password");
       valid = false;
+    } else if (password.length <= 8) {
+      setPasswordError("Password must be 8 characters or more");
+      valid = false;
     } else {
-      setPasswordError("");
-    }
-
-    if (valid) {
-      console.log("Full Name:", name);
-      console.log("Email/Username:", email);
       console.log("Password:", password);
+      setPasswordError("");
     }
   };
   return (

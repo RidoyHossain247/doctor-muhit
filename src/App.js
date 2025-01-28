@@ -27,8 +27,9 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/sign-up" element={<SignUP />} />
           <Route path="/sign-in" element={<SignIn />} />
+          <Route path="/admin-panel" element={<AdminPanel />} />
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
       </Router>
       {/* <Router>
         <ScrollToTop />

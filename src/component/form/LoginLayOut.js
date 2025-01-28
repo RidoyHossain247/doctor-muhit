@@ -30,6 +30,7 @@ const LoginLayOut = ({ child }) => {
       setNameError("Write your Full Name");
       valid = false;
     } else {
+      navigate("/admin-panel");
       setNameError("");
       console.log("Name:", name);
     }

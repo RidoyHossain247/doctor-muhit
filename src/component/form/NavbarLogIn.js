@@ -6,7 +6,6 @@ import {
   IconButton,
   Container,
   Button,
-  Drawer,
   MenuItem,
   styled,
 } from "@mui/material";
@@ -20,7 +19,7 @@ function NavbarLogIn() {
 
   return (
     <StyledAppBar position="fixed">
-      <Container>
+      <Container maxWidth="xl" sx={{ padding: "0px !important" }}>
         <NavContainer>
           <StyledToolbar>
             <DesktopLogo>

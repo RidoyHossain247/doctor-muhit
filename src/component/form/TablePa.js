@@ -46,12 +46,44 @@ const initialRows = [
     doctorImage: "/doctor-avatar.jpg",
     fees: "$50",
   },
+  {
+    id: 4,
+    patientName: "Richard James",
+    patientImage: "/patient-avatar.jpg",
+    department: "Richard James",
+    age: 28,
+    dateTime: "24th July, 2024, 10:AM",
+    doctorName: "Dr. Richard James",
+    doctorImage: "/doctor-avatar.jpg",
+    fees: "$50",
+  },
+  {
+    id: 5,
+    patientName: "Richard James",
+    patientImage: "/patient-avatar.jpg",
+    department: "Richard James",
+    age: 28,
+    dateTime: "24th July, 2024, 10:AM",
+    doctorName: "Dr. Richard James",
+    doctorImage: "/doctor-avatar.jpg",
+    fees: "$50",
+  },
+  {
+    id: 6,
+    patientName: "Richard James",
+    patientImage: "/patient-avatar.jpg",
+    department: "Richard James",
+    age: 28,
+    dateTime: "24th July, 2024, 10:AM",
+    doctorName: "Dr. Richard James",
+    doctorImage: "/doctor-avatar.jpg",
+    fees: "$50",
+  },
 ];
 
 function TablePa() {
   const [rows, setRows] = React.useState(initialRows);
 
-  // Row Delete Function
   const handleDelete = (id) => {
     setRows(rows.filter((row) => row.id !== id));
   };

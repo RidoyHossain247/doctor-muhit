@@ -32,7 +32,7 @@ function DrawerLogin({ child }) {
     } else if (list === "Add Doctor") {
       navigate("/add-doctor");
     } else if (list === "Doctors List") {
-      navigate("/");
+      navigate("/doctor-list");
     }
   };
 

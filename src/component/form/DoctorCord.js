@@ -1,10 +1,15 @@
 import React from "react";
 import { Card, CardContent, Typography, Box, styled } from "@mui/material";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
+import { useNavigate } from "react-router-dom";
 
-function DoctorCard({ image, name, title, isAvailable }) {
+function DoctorCard({ image, name, title, isAvailable, onClick }) {
+  const navigate = useNavigate();
+  const handleSingIn = () => {
+    navigate("/Doctor-Apoint");
+  };
   return (
-    <CardWapper>
+    <CardWapper onClick={onClick}>
       <ImageWapper>
         <Image src={image} alt={name} />
       </ImageWapper>
@@ -57,15 +62,10 @@ const CardWapper = styled(Card)(({ theme }) => ({
 }));
 const ImageWapper = styled(Box)(({ theme }) => ({
   backgroundColor: "#EAEFFF",
-  // display: "flex",
-  // justifyContent: "center",
-  // padding: "20px 0",
-  // overflow: "hidden",
 }));
 const Image = styled("img")(({ theme }) => ({
   width: "auto",
   height: "250px",
   display: "block",
   margin: "auto",
-  // marginBottom: "-40px",
 }));

@@ -1,6 +1,6 @@
 import React from "react";
 
-import SigninLayout from "../component/SigninLayout";
+import SigninLayout from "../component/form/SigninLayout";
 
 // hello
 

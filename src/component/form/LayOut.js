@@ -6,10 +6,10 @@ const LayOut = (props) => {
   console.log(props.children);
   return (
     <div>
-      {/* <NavBar /> */}
+      <NavBar />
       header
       {props.children}
-      {/* <Footer /> */}
+      <Footer />
       footer
     </div>
   );

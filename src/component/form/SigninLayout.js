@@ -1,7 +1,6 @@
 import { Box, Button, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { Container, styled } from "@mui/system";
-
 import { useNavigate } from "react-router-dom";
 import FormEmail from "./FormEmail";
 import FormMainText from "./FormMainText";
@@ -24,6 +23,7 @@ const SigninLayout = () => {
 
   const handleSubmit = () => {
     let valid = true;
+
     if (!email.trim()) {
       setEmailError("Write your email or username");
       valid = false;
@@ -44,8 +44,12 @@ const SigninLayout = () => {
     if (valid) {
       console.log("Email/Username:", email);
       console.log("Password:", password);
+
+      // ✅ Email & Password valid হলে navigate হবে
+      navigate("/admin-panel");
     }
   };
+
   return (
     <Container>
       <MainBoxWrapper>

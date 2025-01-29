@@ -9,43 +9,66 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import EventNoteIcon from "@mui/icons-material/EventNote";
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
+import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
+import { IconButton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 const drawerWidth = 240;
-const list = ["Dashboard", "Appointments", "Add Doctor", "Doctors List"];
+
+const menuItems = [
+  { name: "Dashboard", icon: <DashboardIcon />, route: "/admin-panel" },
+  { name: "Appointments", icon: <EventNoteIcon />, route: "/admin-apoint" },
+  { name: "Add Doctor", icon: <PersonAddIcon />, route: "/add-doctor" },
+  { name: "Doctors List", icon: <LocalHospitalIcon />, route: "/doctor-list" },
+];
 
 function DrawerLogin({ child }) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
   const navigate = useNavigate();
 
-  const handleDrawerClose = () => {
-    setOpen(false);
+  const handleMenuClick = (route) => {
+    navigate(route);
   };
-  const handleMenuClick = (list) => {
-    if (list === "Dashboard") {
-      navigate("/admin-panel");
-    } else if (list === "Appointments") {
-      navigate("/admin-apoint");
-    } else if (list === "Add Doctor") {
-      navigate("/add-doctor");
-    } else if (list === "Doctors List") {
-      navigate("/doctor-list");
-    }
+
+  const toggleDrawer = () => {
+    setOpen(!open);
   };
 
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
+
       <Drawer variant="permanent" open={open}>
-        <Divider />
         <List sx={{ marginTop: "70px" }}>
-          {list.map((text, index) => (
+          <ListItem disablePadding sx={{ display: "block" }}>
+            <ListItemButton
+              onClick={toggleDrawer}
+              sx={{ justifyContent: open ? "flex-start" : "center" }}
+            >
+              <ListItemIcon
+                sx={{ minWidth: 0, mr: open ? 3 : "auto !importent" }}
+              >
+                {open ? <CloseIcon /> : <MenuIcon />}
+              </ListItemIcon>
+              <ListItemText
+                primary={open ? "Close Menu" : ""}
+                sx={{ opacity: open ? 1 : 0 }}
+              />
+            </ListItemButton>
+          </ListItem>
+
+          <Divider />
+
+          {menuItems.map(({ name, icon, route }) => (
             <ListItem
-              key={text}
-              onClick={() => handleMenuClick(text)}
+              key={name}
+              onClick={() => handleMenuClick(route)}
               disablePadding
               sx={{ display: "block" }}
             >
@@ -63,14 +86,15 @@ function DrawerLogin({ child }) {
                     mr: open ? 3 : "auto",
                   }}
                 >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  {icon}
                 </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+                <ListItemText primary={name} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
             </ListItem>
           ))}
         </List>
       </Drawer>
+
       <Box
         component="main"
         sx={{
@@ -89,6 +113,7 @@ function DrawerLogin({ child }) {
 
 export default DrawerLogin;
 
+// Styled Components
 const openedMixin = (theme) => ({
   width: drawerWidth,
   position: "fixed",

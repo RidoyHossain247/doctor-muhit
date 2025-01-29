@@ -15,7 +15,6 @@ import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-import { IconButton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 const drawerWidth = 240;
@@ -51,9 +50,7 @@ function DrawerLogin({ child }) {
               onClick={toggleDrawer}
               sx={{ justifyContent: open ? "flex-start" : "center" }}
             >
-              <ListItemIcon
-                sx={{ minWidth: 0, mr: open ? 3 : "auto !importent" }}
-              >
+              <ListItemIcon sx={{ minWidth: 0, mr: open ? 3 : "auto" }}>
                 {open ? <CloseIcon /> : <MenuIcon />}
               </ListItemIcon>
               <ListItemText

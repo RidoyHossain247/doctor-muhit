@@ -110,7 +110,6 @@ function DrawerLogin({ child }) {
 
 export default DrawerLogin;
 
-// Styled Components
 const openedMixin = (theme) => ({
   width: drawerWidth,
   position: "fixed",

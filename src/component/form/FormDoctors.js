@@ -18,58 +18,76 @@ function FormDoctor() {
         </div>
       </Box>
       <FormContainer container spacing={2}>
-        <Typography>Doctor name</Typography>
         <Grid item xs={12} sm={6}>
-          <TextField fullWidth label="Doctor name" variant="outlined" />
+          <StyledText>Doctor name</StyledText>
+          <TextField fullWidth placeholder="Doctor name" variant="outlined" />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <TextField fullWidth label="Speciality" variant="outlined" select>
+          <StyledText>General physician</StyledText>
+          <TextField
+            fullWidth
+            placeholder="Speciality"
+            variant="outlined"
+            select
+          >
             <MenuItem value="General physician">General physician</MenuItem>
           </TextField>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <TextField fullWidth label="Doctor Email" variant="outlined" />
+          <StyledText>Doctor Email</StyledText>
+          <TextField fullWidth placeholder="Doctor Email" variant="outlined" />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <TextField fullWidth label="Education" variant="outlined" />
+          <StyledText>Education</StyledText>
+          <TextField fullWidth placeholder="Education" variant="outlined" />
         </Grid>
         <Grid item xs={12} sm={6}>
+          <StyledText>Doctor Password</StyledText>
           <TextField
             fullWidth
-            label="Doctor Password"
+            placeholder="Doctor Password"
             variant="outlined"
             type="password"
           />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <TextField fullWidth label="Address 1" variant="outlined" />
+          <StyledText>Address 1</StyledText>
+          <TextField fullWidth placeholder="Address 1" variant="outlined" />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <TextField fullWidth label="Experience" variant="outlined" select>
+          <StyledText>Experience</StyledText>
+          <TextField
+            fullWidth
+            placeholder="Experience"
+            variant="outlined"
+            select
+          >
             <MenuItem value="1 year">1 year</MenuItem>
             <MenuItem value="2 years">2 years</MenuItem>
           </TextField>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <TextField fullWidth label="Address 2" variant="outlined" />
+          <StyledText>Address 2</StyledText>
+          <TextField fullWidth placeholder="Address 2" variant="outlined" />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <TextField fullWidth label="Fees" variant="outlined" />
+          <StyledText>Fees</StyledText>
+          <TextField fullWidth placeholder="Fees" variant="outlined" />
         </Grid>
         <Grid item xs={12}>
+          <StyledText>About me</StyledText>
           <TextField
             fullWidth
             multiline
             rows={4}
-            label="About me"
+            placeholder="About me"
             variant="outlined"
           />
         </Grid>
-        <Grid item xs={12}>
-          <StyledButton variant="contained" color="primary">
-            Add doctor
-          </StyledButton>
-        </Grid>
+
+        <StyledButton variant="contained" color="primary">
+          Add doctor
+        </StyledButton>
       </FormContainer>
     </Box>
   );
@@ -80,6 +98,12 @@ const FormContainer = styled(Grid)({
   maxWidth: "800px",
   padding: "20px 0",
 });
+const StyledText = styled(Typography)({
+  color: "#5D607D",
+  fontSize: "16px",
+  fontWeight: 400,
+  marginBottom: "5px",
+});
 
 const StyledAvatar = styled(Avatar)({
   width: 90,
@@ -89,5 +113,5 @@ const StyledAvatar = styled(Avatar)({
 const StyledButton = styled(Button)({
   display: "block",
   width: "40%",
-  margin: "20px auto 0",
+  margin: "20px 0 0 16px",
 });

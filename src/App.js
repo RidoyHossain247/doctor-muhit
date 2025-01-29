@@ -12,6 +12,8 @@ import AllDoctors from "./pages/AllDoctors";
 import ScrollToTop from "./component/ScrollTop";
 import NavbarLogIn from "./component/form/NavbarLogIn";
 import AdminPanel from "./pages/AdminPanel";
+import AdminApoint from "./pages/Allapnoint";
+import AddDoctor from "./pages/AddDoctor";
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
           <Route path="/sign-up" element={<SignUP />} />
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/admin-panel" element={<AdminPanel />} />
+          <Route path="/admin-apoint" element={<AdminApoint />} />
+          <Route path="/add-doctor" element={<AddDoctor />} />
         </Routes>
         {/* <Footer /> */}
       </Router>

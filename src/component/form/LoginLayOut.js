@@ -14,12 +14,12 @@ const LoginLayOut = ({ child }) => {
   const [emailError, setEmailError] = useState("");
   const [nameError, setNameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
-
+  const navigate = useNavigate();
   const validateEmail = (email) => {
     const regex = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{3,}$/;
     return regex.test(email);
   };
-  const navigate = useNavigate();
+
   const handleSingIn = () => {
     navigate("/sign-in");
   };
@@ -30,7 +30,6 @@ const LoginLayOut = ({ child }) => {
       setNameError("Write your Full Name");
       valid = false;
     } else {
-      navigate("/admin-panel");
       setNameError("");
       console.log("Name:", name);
     }

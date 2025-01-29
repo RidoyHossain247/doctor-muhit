@@ -11,7 +11,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
-import { Container } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const drawerWidth = 240;
 const list = ["Dashboard", "Appointments", "Add Doctor", "Doctors List"];
@@ -19,9 +19,21 @@ const list = ["Dashboard", "Appointments", "Add Doctor", "Doctors List"];
 function DrawerLogin({ child }) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
+  const navigate = useNavigate();
 
   const handleDrawerClose = () => {
     setOpen(false);
+  };
+  const handleMenuClick = (list) => {
+    if (list === "Dashboard") {
+      navigate("/admin-panel");
+    } else if (list === "Appointments") {
+      navigate("/admin-apoint");
+    } else if (list === "Add Doctor") {
+      navigate("/add-doctor");
+    } else if (list === "Doctors List") {
+      navigate("/");
+    }
   };
 
   return (
@@ -31,7 +43,12 @@ function DrawerLogin({ child }) {
         <Divider />
         <List sx={{ marginTop: "70px" }}>
           {list.map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: "block" }}>
+            <ListItem
+              key={text}
+              onClick={() => handleMenuClick(text)}
+              disablePadding
+              sx={{ display: "block" }}
+            >
               <ListItemButton
                 sx={{
                   minHeight: 48,
@@ -54,8 +71,6 @@ function DrawerLogin({ child }) {
           ))}
         </List>
       </Drawer>
-
-      {/* Main Content */}
       <Box
         component="main"
         sx={{

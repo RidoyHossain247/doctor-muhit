@@ -5,7 +5,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Avatar from "@mui/material/Avatar";
 import MenuItem from "@mui/material/MenuItem";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 function FormDoctor() {
   return (
@@ -18,6 +18,7 @@ function FormDoctor() {
         </div>
       </Box>
       <FormContainer container spacing={2}>
+        <Typography>Doctor name</Typography>
         <Grid item xs={12} sm={6}>
           <TextField fullWidth label="Doctor name" variant="outlined" />
         </Grid>

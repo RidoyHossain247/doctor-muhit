@@ -10,13 +10,11 @@ import {
   styled,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import MenuIcon from "@mui/icons-material/Menu";
-import open from "./DrawerLogin";
 
 function NavbarLogIn() {
   const navigate = useNavigate();
   const handleClickSignUp = () => {
-    navigate("/sign-up");
+    navigate("/");
   };
 
   return (
@@ -34,7 +32,7 @@ function NavbarLogIn() {
                 alt="Logo"
               />
             </DesktopLogo>
-            <RightButton>Log Out</RightButton>
+            <RightButton onClick={handleClickSignUp}>Log Out</RightButton>
           </StyledToolbar>
         </NavContainer>
       </Container>

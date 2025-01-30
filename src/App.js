@@ -15,6 +15,7 @@ import AdminPanel from "./pages/AdminPanel";
 import AdminApoint from "./pages/Allapnoint";
 import AddDoctor from "./pages/AddDoctor";
 import DoctorList from "./pages/DoctorList";
+import MainDashBo from "./pages/MainDashBo";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
           <Route path="/admin-apoint" element={<AdminApoint />} />
           <Route path="/add-doctor" element={<AddDoctor />} />{" "}
           <Route path="/doctor-list" element={<DoctorList />} />
+          <Route path="/main-dash" element={<MainDashBo />} />
         </Routes>
         {/* <Footer /> */}
       </Router>

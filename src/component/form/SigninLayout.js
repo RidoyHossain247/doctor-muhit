@@ -45,8 +45,7 @@ const SigninLayout = () => {
       console.log("Email/Username:", email);
       console.log("Password:", password);
 
-      // ✅ Email & Password valid হলে navigate হবে
-      navigate("/admin-panel");
+      navigate("/main-dash");
     }
   };
 

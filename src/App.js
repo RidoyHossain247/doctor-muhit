@@ -33,7 +33,7 @@ function App() {
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/admin-panel" element={<AdminPanel />} />
           <Route path="/admin-apoint" element={<AdminApoint />} />
-          <Route path="/add-doctor" element={<AddDoctor />} />{" "}
+          <Route path="/add-doctor" element={<AddDoctor />} />
           <Route path="/doctor-list" element={<DoctorList />} />
           <Route path="/main-dash" element={<MainDashBo />} />
         </Routes>

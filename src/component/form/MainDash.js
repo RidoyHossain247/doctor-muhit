@@ -14,6 +14,9 @@ import CloseIcon from "@mui/icons-material/Close";
 import { Box, Typography, Grid } from "@mui/material";
 import ListAltIcon from "@mui/icons-material/ListAlt";
 import DashGridItem from "./DashGridItem";
+import AccountBoxIcon from "@mui/icons-material/AccountBox";
+import MenuBookIcon from "@mui/icons-material/MenuBook";
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 
 const initialRows = [
   { id: 1, doctorName: "Dr. Richard James", bookingDate: "24th July, 2024" },
@@ -34,13 +37,29 @@ function MainDash() {
     <StyledContainer>
       <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 1, md: 3 }}>
         <Grid item xs={12} md={4}>
-          <DashGridItem />
+          <DashGridItem
+            Icons={
+              <AccountBoxIcon sx={{ fontSize: "50px", color: "#4F6FE7" }} />
+            }
+            number={"15"}
+            name={"Doctors"}
+          />
         </Grid>
         <Grid item xs={12} md={4}>
-          <DashGridItem />
+          <DashGridItem
+            Icons={<MenuBookIcon sx={{ fontSize: "50px", color: "#4F6FE7" }} />}
+            number={"2"}
+            name={"Appointments"}
+          />
         </Grid>
         <Grid item xs={12} md={4}>
-          <DashGridItem />
+          <DashGridItem
+            Icons={
+              <ManageAccountsIcon sx={{ fontSize: "50px", color: "#4F6FE7" }} />
+            }
+            number={"4"}
+            name={"Patients"}
+          />
         </Grid>
       </Grid>
       <TableContainer component={Paper} sx={{ border: "#D8D8D8" }}>
@@ -128,6 +147,8 @@ const DeleteButton = styled(IconButton)({
   borderRadius: "50%",
   backgroundColor: "#FEF7F5",
   border: "1px solid #FEE7E1",
+  marginTop: "10px",
+  marginBottom: "10px",
 });
 
 const DeleteIcon = styled(CloseIcon)({

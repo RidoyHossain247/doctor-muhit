@@ -1,4 +1,5 @@
 import * as React from "react";
+import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import Container from "@mui/material/Container";
 import TableBody from "@mui/material/TableBody";
@@ -17,56 +18,36 @@ const initialRows = [
     id: 1,
     patientName: "Richard James",
     patientImage: "/patient-avatar.jpg",
-    department: "Richard James",
     age: 28,
     dateTime: "24th July, 2024, 10:AM",
-    doctorName: "Dr. Richard James",
-    doctorImage: "/doctor-avatar.jpg",
-    fees: "$50",
   },
   {
     id: 2,
     patientName: "Richard James",
     patientImage: "/patient-avatar.jpg",
-    department: "Richard James",
     age: 28,
     dateTime: "24th July, 2024, 10:AM",
-    doctorName: "Dr. Richard James",
-    doctorImage: "/doctor-avatar.jpg",
-    fees: "$50",
   },
   {
     id: 3,
     patientName: "Richard James",
     patientImage: "/patient-avatar.jpg",
-    department: "Richard James",
     age: 28,
     dateTime: "24th July, 2024, 10:AM",
-    doctorName: "Dr. Richard James",
-    doctorImage: "/doctor-avatar.jpg",
-    fees: "$50",
   },
   {
     id: 4,
     patientName: "Richard James",
     patientImage: "/patient-avatar.jpg",
-    department: "Richard James",
     age: 28,
     dateTime: "24th July, 2024, 10:AM",
-    doctorName: "Dr. Richard James",
-    doctorImage: "/doctor-avatar.jpg",
-    fees: "$50",
   },
   {
     id: 5,
     patientName: "Richard James",
     patientImage: "/patient-avatar.jpg",
-    department: "Richard James",
     age: 28,
     dateTime: "24th July, 2024, 10:AM",
-    doctorName: "Dr. Richard James",
-    doctorImage: "/doctor-avatar.jpg",
-    fees: "$50",
   },
   {
     id: 6,
@@ -74,7 +55,6 @@ const initialRows = [
     patientImage: "/patient-avatar.jpg",
     age: 28,
     dateTime: "24th July, 2024, 10:AM",
-    fees: "$50",
   },
 ];
 
@@ -86,71 +66,40 @@ function AllAponment() {
   };
 
   return (
-    <Container sx={{ marginTop: "30px", padding: "0" }}>
-      <Typography
-        sx={{
-          marginBottom: "10px",
-          fontSize: "22px",
-          color: "#323232",
-          fontWeight: 500,
-        }}
-      >
-        All Appointments
-      </Typography>
+    <StyledContainer>
+      <Title>All Appointments</Title>
       <TableContainer component={Paper}>
         <Table size="small" aria-label="patient appointments">
           <TableHead>
             <TableRow>
               <TableCell>#</TableCell>
               <TableCell>Patient</TableCell>
-
               <TableCell>Age</TableCell>
               <TableCell>Date & Time</TableCell>
-
               <TableCell align="center">Action</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {rows.map((row) => (
-              <TableRow
-                key={row.id}
-                sx={{
-                  "&:last-child td, &:last-child th": {
-                    borderBottom: "none",
-                  },
-                  "&:hover": { backgroundColor: "#E2E5FF" },
-                  padding: "40px",
-                }}
-              >
+              <StyledTableRow key={row.id}>
                 <TableCell>{row.id}</TableCell>
                 <TableCell>
-                  <Box sx={{ display: "flex", alignItems: "center" }}>
-                    <Avatar
+                  <AvatarBox>
+                    <StyledAvatar
                       src={row.patientImage}
                       alt={row.patientName}
-                      sx={{ width: 40, height: 40, marginRight: 1 }}
                     />
                     {row.patientName}
-                  </Box>
+                  </AvatarBox>
                 </TableCell>
                 <TableCell>{row.age}</TableCell>
                 <TableCell>{row.dateTime}</TableCell>
                 <TableCell align="center">
-                  <IconButton
-                    onClick={() => handleDelete(row.id)}
-                    sx={{
-                      height: "40px",
-                      width: "40px",
-                      borderRadius: "50%",
-                      bgcolor: "#FEF7F5",
-                      border: "1px solid #FEE7E1",
-                      marginY: "10px",
-                    }}
-                  >
-                    <CloseIcon sx={{ color: "#E57373" }} />
-                  </IconButton>
+                  <DeleteButton onClick={() => handleDelete(row.id)}>
+                    <DeleteIcon />
+                  </DeleteButton>
                 </TableCell>
-              </TableRow>
+              </StyledTableRow>
             ))}
             {rows.length === 0 && (
               <TableRow>
@@ -162,7 +111,51 @@ function AllAponment() {
           </TableBody>
         </Table>
       </TableContainer>
-    </Container>
+    </StyledContainer>
   );
 }
+
 export default AllAponment;
+
+const StyledContainer = styled(Container)({
+  marginTop: "30px",
+  padding: "0",
+});
+
+const Title = styled(Typography)({
+  marginBottom: "10px",
+  fontSize: "22px",
+  color: "#323232",
+  fontWeight: 500,
+});
+
+const StyledTableRow = styled(TableRow)({
+  "&:last-child td, &:last-child th": { borderBottom: "none" },
+  "&:hover": { backgroundColor: "#E2E5FF" },
+  padding: "40px",
+});
+
+const AvatarBox = styled(Box)({
+  display: "flex",
+  alignItems: "center",
+});
+
+const StyledAvatar = styled(Avatar)({
+  width: 40,
+  height: 40,
+  marginRight: 8,
+});
+
+const DeleteButton = styled(IconButton)({
+  height: "40px",
+  width: "40px",
+  borderRadius: "50%",
+  backgroundColor: "#FEF7F5",
+  border: "1px solid #FEE7E1",
+  marginTop: "10px",
+  marginBottom: "10px",
+});
+
+const DeleteIcon = styled(CloseIcon)({
+  color: "#E57373",
+});

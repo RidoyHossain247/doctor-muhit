@@ -1,4 +1,5 @@
 import * as React from "react";
+import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import Container from "@mui/material/Container";
 import TableBody from "@mui/material/TableBody";
@@ -17,7 +18,7 @@ const initialRows = [
     id: 1,
     patientName: "Richard James",
     patientImage: "/patient-avatar.jpg",
-    department: "Richard James",
+    department: "Cardiology",
     age: 28,
     dateTime: "24th July, 2024, 10:AM",
     doctorName: "Dr. Richard James",
@@ -26,20 +27,20 @@ const initialRows = [
   },
   {
     id: 2,
-    patientName: "Richard James",
+    patientName: "Emily Watson",
     patientImage: "/patient-avatar.jpg",
-    department: "Richard James",
-    age: 28,
-    dateTime: "24th July, 2024, 10:AM",
-    doctorName: "Dr. Richard James",
+    department: "Neurology",
+    age: 35,
+    dateTime: "25th July, 2024, 11:AM",
+    doctorName: "Dr. Sarah Parker",
     doctorImage: "/doctor-avatar.jpg",
-    fees: "$50",
+    fees: "$70",
   },
   {
     id: 3,
     patientName: "Richard James",
     patientImage: "/patient-avatar.jpg",
-    department: "Richard James",
+    department: "Cardiology",
     age: 28,
     dateTime: "24th July, 2024, 10:AM",
     doctorName: "Dr. Richard James",
@@ -50,29 +51,7 @@ const initialRows = [
     id: 4,
     patientName: "Richard James",
     patientImage: "/patient-avatar.jpg",
-    department: "Richard James",
-    age: 28,
-    dateTime: "24th July, 2024, 10:AM",
-    doctorName: "Dr. Richard James",
-    doctorImage: "/doctor-avatar.jpg",
-    fees: "$50",
-  },
-  {
-    id: 5,
-    patientName: "Richard James",
-    patientImage: "/patient-avatar.jpg",
-    department: "Richard James",
-    age: 28,
-    dateTime: "24th July, 2024, 10:AM",
-    doctorName: "Dr. Richard James",
-    doctorImage: "/doctor-avatar.jpg",
-    fees: "$50",
-  },
-  {
-    id: 6,
-    patientName: "Richard James",
-    patientImage: "/patient-avatar.jpg",
-    department: "Richard James",
+    department: "Cardiology",
     age: 28,
     dateTime: "24th July, 2024, 10:AM",
     doctorName: "Dr. Richard James",
@@ -89,7 +68,7 @@ function TablePa() {
   };
 
   return (
-    <Container sx={{ marginTop: "30px", padding: "0" }}>
+    <StyledContainer>
       <TableContainer component={Paper}>
         <Table size="small" aria-label="patient appointments">
           <TableHead>
@@ -106,57 +85,33 @@ function TablePa() {
           </TableHead>
           <TableBody>
             {rows.map((row) => (
-              <TableRow
-                key={row.id}
-                sx={{
-                  "&:last-child td, &:last-child th": {
-                    borderBottom: "none",
-                  },
-                  "&:hover": { backgroundColor: "#E2E5FF" },
-                  padding: "40px",
-                }}
-              >
+              <StyledTableRow key={row.id}>
                 <TableCell>{row.id}</TableCell>
                 <TableCell>
-                  <Box sx={{ display: "flex", alignItems: "center" }}>
-                    <Avatar
+                  <AvatarBox>
+                    <StyledAvatar
                       src={row.patientImage}
                       alt={row.patientName}
-                      sx={{ width: 30, height: 30, marginRight: 1 }}
                     />
                     {row.patientName}
-                  </Box>
+                  </AvatarBox>
                 </TableCell>
                 <TableCell>{row.department}</TableCell>
                 <TableCell>{row.age}</TableCell>
                 <TableCell>{row.dateTime}</TableCell>
                 <TableCell>
-                  <Box sx={{ display: "flex", alignItems: "center" }}>
-                    <Avatar
-                      src={row.doctorImage}
-                      alt={row.doctorName}
-                      sx={{ width: 30, height: 30, marginRight: 1 }}
-                    />
+                  <AvatarBox>
+                    <StyledAvatar src={row.doctorImage} alt={row.doctorName} />
                     {row.doctorName}
-                  </Box>
+                  </AvatarBox>
                 </TableCell>
                 <TableCell align="center">{row.fees}</TableCell>
                 <TableCell align="center">
-                  <IconButton
-                    onClick={() => handleDelete(row.id)}
-                    sx={{
-                      height: "40px",
-                      width: "40px",
-                      borderRadius: "50%",
-                      bgcolor: "#FEF7F5",
-                      border: "1px solid #FEE7E1",
-                      marginY: "10px",
-                    }}
-                  >
-                    <CloseIcon sx={{ color: "#E57373" }} />
-                  </IconButton>
+                  <DeleteButton onClick={() => handleDelete(row.id)}>
+                    <DeleteIcon />
+                  </DeleteButton>
                 </TableCell>
-              </TableRow>
+              </StyledTableRow>
             ))}
             {rows.length === 0 && (
               <TableRow>
@@ -168,7 +123,44 @@ function TablePa() {
           </TableBody>
         </Table>
       </TableContainer>
-    </Container>
+    </StyledContainer>
   );
 }
+
 export default TablePa;
+
+// 🔽 Styled Components নিচে রাখা হয়েছে
+const StyledContainer = styled(Container)({
+  marginTop: "30px",
+  padding: "0",
+});
+
+const StyledTableRow = styled(TableRow)({
+  "&:last-child td, &:last-child th": { borderBottom: "none" },
+  "&:hover": { backgroundColor: "#E2E5FF" },
+});
+
+const AvatarBox = styled(Box)({
+  display: "flex",
+  alignItems: "center",
+});
+
+const StyledAvatar = styled(Avatar)({
+  width: 30,
+  height: 30,
+  marginRight: 8,
+});
+
+const DeleteButton = styled(IconButton)({
+  height: "40px",
+  width: "40px",
+  borderRadius: "50%",
+  backgroundColor: "#FEF7F5",
+  border: "1px solid #FEE7E1",
+  marginTop: "10px",
+  marginBottom: "10px",
+});
+
+const DeleteIcon = styled(CloseIcon)({
+  color: "#E57373",
+});

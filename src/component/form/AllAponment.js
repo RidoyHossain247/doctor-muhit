@@ -10,7 +10,7 @@ import Paper from "@mui/material/Paper";
 import IconButton from "@mui/material/IconButton";
 import Avatar from "@mui/material/Avatar";
 import CloseIcon from "@mui/icons-material/Close";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 const initialRows = [
   {
@@ -87,6 +87,16 @@ function AllAponment() {
 
   return (
     <Container sx={{ marginTop: "30px", padding: "0" }}>
+      <Typography
+        sx={{
+          marginBottom: "10px",
+          fontSize: "22px",
+          color: "#323232",
+          fontWeight: 500,
+        }}
+      >
+        All Appointments
+      </Typography>
       <TableContainer component={Paper}>
         <Table size="small" aria-label="patient appointments">
           <TableHead>

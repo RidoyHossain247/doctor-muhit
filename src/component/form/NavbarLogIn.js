@@ -1,14 +1,5 @@
 import * as React from "react";
-import {
-  AppBar,
-  Box,
-  Toolbar,
-  IconButton,
-  Container,
-  Button,
-  MenuItem,
-  styled,
-} from "@mui/material";
+import { AppBar, Box, Toolbar, Container, Button, styled } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 function NavbarLogIn() {
@@ -66,29 +57,6 @@ const DesktopLogo = styled(Box)(({ theme }) => ({
   [theme.breakpoints.up("md")]: {
     display: "flex",
     marginRight: theme.spacing(1),
-  },
-}));
-
-const MenuButton = styled(IconButton)(({ theme }) => ({
-  display: "flex",
-  [theme.breakpoints.up("md")]: {
-    display: "none",
-  },
-}));
-
-const DrawerLogo = styled(Box)(({ theme }) => ({}));
-
-const DrawerMenuItem = styled(MenuItem)(({ theme }) => ({
-  textAlign: "center",
-  color: "black",
-}));
-
-const DesktopNav = styled(Box)(({ theme }) => ({
-  display: "none",
-  [theme.breakpoints.up("md")]: {
-    display: "flex",
-    justifyContent: "center",
-    flexGrow: 1,
   },
 }));
 

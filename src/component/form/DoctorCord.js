@@ -5,9 +5,6 @@ import { useNavigate } from "react-router-dom";
 
 function DoctorCard({ image, name, title, isAvailable, onClick }) {
   const navigate = useNavigate();
-  const handleSingIn = () => {
-    navigate("/Doctor-Apoint");
-  };
   return (
     <CardWapper onClick={onClick}>
       <ImageWapper>
@@ -41,7 +38,7 @@ function DoctorCard({ image, name, title, isAvailable, onClick }) {
 }
 
 export default DoctorCard;
-const Aviacle = styled(Typography)(({ theme }) => ({
+const Aviacle = styled(Typography)(() => ({
   color: "#0FBF00",
   fontWeight: 700,
   display: "flex",
@@ -49,7 +46,7 @@ const Aviacle = styled(Typography)(({ theme }) => ({
   fontSize: "14px",
   marginBottom: "8px",
 }));
-const CardWapper = styled(Card)(({ theme }) => ({
+const CardWapper = styled(Card)(() => ({
   borderRadius: "12px",
   boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
   overflow: "hidden",
@@ -60,10 +57,10 @@ const CardWapper = styled(Card)(({ theme }) => ({
     transform: "translateY(-5px)",
   },
 }));
-const ImageWapper = styled(Box)(({ theme }) => ({
+const ImageWapper = styled(Box)(() => ({
   backgroundColor: "#EAEFFF",
 }));
-const Image = styled("img")(({ theme }) => ({
+const Image = styled("img")(() => ({
   width: "auto",
   height: "250px",
   display: "block",

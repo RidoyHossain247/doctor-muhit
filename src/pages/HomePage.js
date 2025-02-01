@@ -6,11 +6,11 @@ import Title from "../component/form/Title";
 import { Box } from "@mui/material";
 import SecHero from "../component/form/SecHero";
 import DrawerLogin from "../component/form/DrawerLogin";
+import Footer from "../component/form/Footer";
 
 const HomePage = () => {
   return (
     <Box padding={{ xs: "0 16px ", sm: "0", md: "0" }}>
-      {/* <DrawerLogin /> */}
       <HeroItem />
       <Title
         name="Find by Speciality "
@@ -25,6 +25,7 @@ const HomePage = () => {
       <CircleItem />
       <CardsLayout />
       <SecHero />
+      <Footer />
     </Box>
   );
 };

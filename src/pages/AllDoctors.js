@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Button, Container } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import CardsLayout from "../component/form/CardsLayout";
+import Footer from "../component/form/Footer";
 
 const doctorCategories = [
   "All Doctors",
@@ -16,8 +17,18 @@ const doctorCategories = [
 const AllDoctors = () => {
   const [selectedCategory, setSelectedCategory] = useState("All Doctors");
 
+  useEffect(() => {
+    const savedCategory = localStorage.getItem("selectedCategory");
+    if (savedCategory) {
+      console.log("Restoring category:", savedCategory);
+      setSelectedCategory(savedCategory);
+    }
+  }, []);
+
   const handleSelect = (category) => {
+    console.log("Selected:", category);
     setSelectedCategory(category);
+    localStorage.setItem("selectedCategory", category);
   };
 
   return (
@@ -34,9 +45,9 @@ const AllDoctors = () => {
             </StyledButton>
           ))}
         </CategoryBox>
-
-        <CardsLayout />
+        <CardsLayout selectedCategory={selectedCategory} />
       </StyledMainBox>
+      <Footer />
     </Container>
   );
 };
@@ -51,20 +62,20 @@ const StyledMainBox = styled(Box)(({ theme }) => ({
 const CategoryBox = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
-  gap: theme.spacing(2),
+  gap: "17px",
   marginTop: "100px",
 }));
 
-const StyledButton = styled(Button)(({ theme, selected }) => ({
-  width: "220px",
+const StyledButton = styled(Button)(({ selected }) => ({
+  width: "263px",
   textTransform: "none",
   justifyContent: "start",
-  fontWeight: 600,
+  fontWeight: 400,
   padding: "10px",
-  backgroundColor: selected ? "#E2E5FF" : "",
-  color: "#000",
-  border: "1px solid #B4B4B4",
+  backgroundColor: selected ? "#E2E5FF" : "#FFFFFF",
+  color: "#4B5563",
+  border: selected ? "1px solid #E2E5FF" : "1px solid #B4B4B4",
   ":hover": {
-    backgroundColor: selected ? "#C7D2FE" : "",
+    backgroundColor: selected ? "#C7D2FE" : "#F0F0F0",
   },
 }));

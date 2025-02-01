@@ -149,7 +149,7 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
-  borderBottom: "1px solid #ADADAD",
+  borderBottom: "1px solid #ADADAD !important",
   padding: "10px 0px 10px 0px",
 }));
 

@@ -2,13 +2,14 @@ import React from "react";
 import NavbarLogIn from "../component/form/NavbarLogIn";
 import DrawerLogin from "../component/form/DrawerLogin";
 import TablePa from "../component/form/TablePa";
+import { Box } from "@mui/material";
 
 const AdminPanel = () => {
   return (
-    <div>
+    <Box bgcolor={"#F8F9FD"}>
       <NavbarLogIn />
       <DrawerLogin child={<TablePa />} />
-    </div>
+    </Box>
   );
 };
 

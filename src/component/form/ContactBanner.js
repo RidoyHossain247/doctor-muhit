@@ -5,17 +5,9 @@ import { styled } from "@mui/material/styles";
 function ContactBanner() {
   return (
     <TitleBox>
-      <Typography
-        sx={{
-          textAlign: "center",
-          fontSize: "28px",
-          fontWeight: 500,
-          textTransform: "uppercase",
-          letterSpacing: "1px",
-        }}
-      >
+      <MainTitle>
         Contact <span style={{ color: "#000000", fontWeight: 600 }}>Us</span>
-      </Typography>
+      </MainTitle>
       <Container>
         <MainBox>
           <ImageBox>
@@ -33,9 +25,8 @@ function ContactBanner() {
             </Paragraph>
             <Subtitle>Careers at Prescripto</Subtitle>
             <Paragraph>Learn more about our teams and job openings.</Paragraph>
-            <ButtonBox>
-              <Button variant="outlined">Explore Jobs</Button>
-            </ButtonBox>
+
+            <ButtonBox>Explore Jobs</ButtonBox>
           </ContentBox>
         </MainBox>
       </Container>
@@ -44,7 +35,13 @@ function ContactBanner() {
 }
 
 export default ContactBanner;
-
+const MainTitle = styled(Typography)(({ theme }) => ({
+  textAlign: "center",
+  fontSize: "28px",
+  fontWeight: 500,
+  textTransform: "uppercase",
+  letterSpacing: "1px",
+}));
 const TitleBox = styled(Box)(({ theme }) => ({
   marginTop: "80px",
   marginBottom: "40px",
@@ -53,9 +50,7 @@ const TitleBox = styled(Box)(({ theme }) => ({
 const MainBox = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
-
   marginTop: "40px",
-  padding: "0",
   [theme.breakpoints.down("md")]: {
     flexDirection: "column",
     alignItems: "center",
@@ -68,9 +63,8 @@ const ImageBox = styled(Box)(({ theme }) => ({
   display: "flex",
   justifyContent: "flex-end",
   img: {
-    width: "60%",
+    width: "70%",
     height: "auto",
-    borderRadius: "8px",
     [theme.breakpoints.down("md")]: {
       width: "100%",
       marginBottom: theme.spacing(4),
@@ -95,7 +89,7 @@ const ContentBox = styled(Box)(({ theme }) => ({
 const Subtitle = styled(Typography)(({ theme }) => ({
   fontSize: "18px",
   fontWeight: "600",
-  color: "#000000",
+  color: "#4B5563",
   marginBottom: theme.spacing(2),
   textTransform: "uppercase",
 }));
@@ -107,11 +101,12 @@ const Paragraph = styled(Typography)(({ theme }) => ({
   marginBottom: theme.spacing(2),
 }));
 
-const ButtonBox = styled(Box)(({ theme }) => ({
-  marginTop: theme.spacing(2),
-  display: "flex",
-  justifyContent: "center",
-  [theme.breakpoints.up("md")]: {
-    justifyContent: "flex-start",
-  },
+const ButtonBox = styled(Button)(({ theme }) => ({
+  marginTop: theme.spacing(1),
+  border: "1px solid #1F2937",
+  padding: "20px 30px",
+  textTransform: "none",
+  color: "#1F2937",
+  fontSize: "16px",
+  fontWeight: 400,
 }));

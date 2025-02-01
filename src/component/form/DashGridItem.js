@@ -3,7 +3,11 @@ import React from "react";
 
 const DashGridItem = ({ number, name, Icons }) => {
   return (
-    <Box boxShadow={"5px 5px 20px rgba(0, 0, 0, 0.1)"} marginBottom={"40px"}>
+    <Box
+      boxShadow={"5px 5px 20px rgba(0, 0, 0, 0.1)"}
+      marginBottom={"40px"}
+      bgcolor={"white"}
+    >
       <Box display={"flex"} p={"30px 0 30px 20px"} alignItems={"center"}>
         <Box
           sx={{

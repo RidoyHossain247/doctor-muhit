@@ -7,10 +7,8 @@ import Contact from "./pages/ContactUs";
 import SignUP from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import NavBar from "./component/form/Navbar";
-import Footer from "./component/form/Footer";
 import AllDoctors from "./pages/AllDoctors";
 import ScrollToTop from "./component/ScrollTop";
-import NavbarLogIn from "./component/form/NavbarLogIn";
 import AdminPanel from "./pages/AdminPanel";
 import AdminApoint from "./pages/Allapnoint";
 import AddDoctor from "./pages/AddDoctor";
@@ -37,7 +35,7 @@ function App() {
           <Route path="/doctor-list" element={<DoctorList />} />
           <Route path="/main-dash" element={<MainDashBo />} />
         </Routes>
-        {/* <Footer /> */}
+        {/* */}
       </Router>
       {/* <Router>
         <ScrollToTop />

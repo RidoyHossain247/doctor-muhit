@@ -4,15 +4,15 @@ import { useNavigate } from "react-router-dom";
 
 const Footer = ({ marginTop }) => {
   const navigate = useNavigate();
-  const pages = ["HOME", "All DOCTORS", "ABOUT", "CONTACT"];
+  const pages = ["Home", "All Docter", "About", "Contact"];
   const handleMenuClick = (page) => {
-    if (page === "All DOCTORS") {
+    if (page === "All Docter") {
       navigate("/all-docters");
-    } else if (page === "HOME") {
+    } else if (page === "Home") {
       navigate("/");
-    } else if (page === "ABOUT") {
+    } else if (page === "About") {
       navigate("/about");
-    } else if (page === "CONTACT") {
+    } else if (page === "Contact") {
       navigate("/contact");
     }
   };
@@ -25,7 +25,7 @@ const Footer = ({ marginTop }) => {
             <LogoBox>
               <LogoWrapper>
                 <img
-                  style={{ height: "36px", width: "150px" }}
+                  style={{ height: "36px", width: "180px" }}
                   src="/images/logo-footer.png"
                   alt="Logo"
                 />
@@ -59,7 +59,6 @@ const Footer = ({ marginTop }) => {
           </Grid>
         </Grid>
 
-        {/* Footer Bottom */}
         <FooterBottom>
           <FooterText>
             Copyright © 2024 GreatStack - All Right Reserved.
@@ -76,7 +75,7 @@ const StyledContainer = styled(Container)(({ theme }) => ({
   backgroundColor: "#f9f9f9",
 }));
 
-const MainBox = styled(Box)(({ theme }) => ({
+const MainBox = styled(Box)(() => ({
   padding: "40px 20px",
   borderTop: "1px solid #e0e0e0",
   marginTop: "100px",
@@ -94,9 +93,9 @@ const LogoWrapper = styled(Box)(({ theme }) => ({
 
 const DescriptionText = styled(Typography)(({ theme }) => ({
   color: "#4B5563",
-  lineHeight: "1.6",
+  lineHeight: "30px",
   width: "90%",
-  variant: "body2",
+  fontSize: "16px",
 }));
 
 const SectionTitle = styled(Typography)(({ theme }) => ({
@@ -113,20 +112,21 @@ const LinkWrapper = styled(Box)(({ theme }) => ({
 }));
 
 const StyledLink = styled(Link)(({ theme }) => ({
-  color: "#666",
-  fontSize: "14px",
+  color: "#4B5563",
+  fontSize: "15px",
   textDecoration: "none",
   cursor: "pointer",
+  lineHeight: "30px",
   "&:hover": {
     color: "#3f51b5",
   },
 }));
 
 const ContactInfo = styled(Typography)(({ theme }) => ({
-  color: "#666",
-  fontSize: "14px",
+  color: "#4B5563",
+  fontSize: "16px",
   marginBottom: theme.spacing(1),
-  variant: "body2",
+  lineHeight: "30px",
 }));
 
 const FooterBottom = styled(Box)(({ theme }) => ({

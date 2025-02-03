@@ -8,6 +8,7 @@ const ContactUs = () => {
   return (
     <Box>
       <ContactBanner />
+      <Footer />
     </Box>
   );
 };

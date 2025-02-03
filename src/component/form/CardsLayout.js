@@ -11,7 +11,7 @@ const CardsLayout = () => {
   const doctorCards = [
     {
       image: "./images/image_388.png",
-      name: "Dr. Shagor James",
+      name: "Dr. Max James",
       title: "General Physician",
       isAvailable: true,
       route: "/Doctor-Apoint",
@@ -80,7 +80,7 @@ const CardsLayout = () => {
 
   return (
     <Container sx={{ marginTop: "100px" }}>
-      <Grid container spacing={1}>
+      <Grid container spacing={3}>
         {doctorCards.slice(0, visibleItems).map((doctor, index) => (
           <Grid key={index} item xs={6} sm={6} md={3} lg={3}>
             <Box>

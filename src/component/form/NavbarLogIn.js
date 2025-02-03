@@ -1,109 +1,68 @@
 import * as React from "react";
-import {
-  AppBar,
-  Box,
-  Toolbar,
-  IconButton,
-  Container,
-  Button,
-  MenuItem,
-  styled,
-} from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { AppBar, Toolbar, IconButton, Button, Box } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import open from "./DrawerLogin";
+import { useNavigate } from "react-router-dom";
+import { styled } from "@mui/material/styles";
 
-function NavbarLogIn() {
+function NavbarLogIn({ toggleDrawer }) {
   const navigate = useNavigate();
+
   const handleClickSignUp = () => {
-    navigate("/sign-up");
+    navigate("/");
   };
 
   return (
     <StyledAppBar position="fixed">
-      <Container maxWidth="xl" sx={{ padding: "0px !important" }}>
-        <NavContainer>
-          <StyledToolbar>
-            <DesktopLogo>
-              <img
-                style={{
-                  height: "36px",
-                  width: "170px",
-                }}
-                src="./images/logo-footer.png"
-                alt="Logo"
-              />
-            </DesktopLogo>
-            <RightButton>Log Out</RightButton>
-          </StyledToolbar>
-        </NavContainer>
-      </Container>
+      <Toolbar sx={{ height: "70px" }}>
+        <StyledIconButton color="inherit" onClick={toggleDrawer}>
+          <MenuIcon />
+        </StyledIconButton>
+
+        <LogoBox>
+          <img
+            src="./images/logo-footer.png"
+            alt="Logo"
+            style={{ height: "36px", width: "170px" }}
+          />
+        </LogoBox>
+
+        <StyledButton variant="contained" onClick={handleClickSignUp}>
+          Log Out
+        </StyledButton>
+      </Toolbar>
     </StyledAppBar>
   );
 }
 
 export default NavbarLogIn;
-
-const StyledAppBar = styled(AppBar)(({ theme }) => ({
-  backgroundColor: "transparent",
-  boxShadow: "none",
-}));
-
-const NavContainer = styled(Box)(({ theme }) => ({
+const StyledAppBar = styled(AppBar)({
   backgroundColor: "white",
-  textAlign: "center",
-  overflow: "hidden",
-}));
-
-const StyledToolbar = styled(Toolbar)(({ theme }) => ({
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
+  boxShadow: "none",
   borderBottom: "1px solid #ADADAD",
-  padding: "10px 0px 10px 0px",
-}));
+});
 
-const DesktopLogo = styled(Box)(({ theme }) => ({
-  display: "none",
-  [theme.breakpoints.up("md")]: {
-    display: "flex",
-    marginRight: theme.spacing(1),
-  },
-}));
-
-const MenuButton = styled(IconButton)(({ theme }) => ({
-  display: "flex",
-  [theme.breakpoints.up("md")]: {
+const StyledIconButton = styled(IconButton)({
+  marginRight: "16px",
+  display: "block",
+  color: "black",
+  "@media (min-width: 600px)": {
     display: "none",
   },
-}));
+});
 
-const DrawerLogo = styled(Box)(({ theme }) => ({}));
+const LogoBox = styled(Box)({
+  flexGrow: 1,
+});
 
-const DrawerMenuItem = styled(MenuItem)(({ theme }) => ({
-  textAlign: "center",
-  color: "black",
-}));
-
-const DesktopNav = styled(Box)(({ theme }) => ({
-  display: "none",
-  [theme.breakpoints.up("md")]: {
-    display: "flex",
-    justifyContent: "center",
-    flexGrow: 1,
-  },
-}));
-
-const RightButton = styled(Button)(({ theme }) => ({
+const StyledButton = styled(Button)({
   backgroundColor: "#5F6FFF",
+  fontSize: "18px",
+  lineHeight: "43px",
+  borderRadius: "47px",
+  padding: "5px 40px",
   color: "#FFFFFF",
-  fontWeight: 400,
-  fontSize: "16px",
-  padding: "10px 36px",
   textTransform: "none",
-  borderRadius: "45px",
-  [theme.breakpoints.down("md")]: {
-    fontSize: "14px",
-    padding: "10px 25px",
+  "&:hover": {
+    backgroundColor: "#4E5DD4",
   },
-}));
+});

@@ -11,54 +11,22 @@ import Paper from "@mui/material/Paper";
 import IconButton from "@mui/material/IconButton";
 import Avatar from "@mui/material/Avatar";
 import CloseIcon from "@mui/icons-material/Close";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, Grid } from "@mui/material";
+import ListAltIcon from "@mui/icons-material/ListAlt";
+import DashGridItem from "./DashGridItem";
+import AccountBoxIcon from "@mui/icons-material/AccountBox";
+import MenuBookIcon from "@mui/icons-material/MenuBook";
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 
 const initialRows = [
-  {
-    id: 1,
-    patientName: "Richard James",
-    patientImage: "/patient-avatar.jpg",
-    age: 28,
-    dateTime: "24th July, 2024, 10:AM",
-  },
-  {
-    id: 2,
-    patientName: "Richard James",
-    patientImage: "/patient-avatar.jpg",
-    age: 28,
-    dateTime: "24th July, 2024, 10:AM",
-  },
-  {
-    id: 3,
-    patientName: "Richard James",
-    patientImage: "/patient-avatar.jpg",
-    age: 28,
-    dateTime: "24th July, 2024, 10:AM",
-  },
-  {
-    id: 4,
-    patientName: "Richard James",
-    patientImage: "/patient-avatar.jpg",
-    age: 28,
-    dateTime: "24th July, 2024, 10:AM",
-  },
-  {
-    id: 5,
-    patientName: "Richard James",
-    patientImage: "/patient-avatar.jpg",
-    age: 28,
-    dateTime: "24th July, 2024, 10:AM",
-  },
-  {
-    id: 6,
-    patientName: "Richard James",
-    patientImage: "/patient-avatar.jpg",
-    age: 28,
-    dateTime: "24th July, 2024, 10:AM",
-  },
+  { id: 1, doctorName: "Dr. Richard James", bookingDate: "24th July, 2024" },
+  { id: 2, doctorName: "Dr. Sarah Parker", bookingDate: "25th July, 2024" },
+  { id: 3, doctorName: "Dr. John Doe", bookingDate: "26th July, 2024" },
+  { id: 4, doctorName: "Dr. Emma Watson", bookingDate: "27th July, 2024" },
+  { id: 5, doctorName: "Dr. David Smith", bookingDate: "28th July, 2024" },
 ];
 
-function AllAponment() {
+function MainDash() {
   const [rows, setRows] = React.useState(initialRows);
 
   const handleDelete = (id) => {
@@ -67,33 +35,62 @@ function AllAponment() {
 
   return (
     <StyledContainer>
-      <Title>All Appointments</Title>
-      <TableContainer component={Paper}>
+      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 1, md: 3 }}>
+        <Grid item xs={12} md={4}>
+          <DashGridItem
+            Icons={
+              <AccountBoxIcon sx={{ fontSize: "50px", color: "#4F6FE7" }} />
+            }
+            number={"15"}
+            name={"Doctors"}
+          />
+        </Grid>
+        <Grid item xs={12} md={4}>
+          <DashGridItem
+            Icons={<MenuBookIcon sx={{ fontSize: "50px", color: "#4F6FE7" }} />}
+            number={"2"}
+            name={"Appointments"}
+          />
+        </Grid>
+        <Grid item xs={12} md={4}>
+          <DashGridItem
+            Icons={
+              <ManageAccountsIcon sx={{ fontSize: "50px", color: "#4F6FE7" }} />
+            }
+            number={"4"}
+            name={"Patients"}
+          />
+        </Grid>
+      </Grid>
+      <TableContainer component={Paper} sx={{ border: "#D8D8D8" }}>
         <Table size="small" aria-label="patient appointments">
-          <TableHead>
-            <TableRow>
-              <TableCell>#</TableCell>
-              <TableCell>Patient</TableCell>
-              <TableCell>Age</TableCell>
-              <TableCell>Date & Time</TableCell>
-              <TableCell align="center">Action</TableCell>
-            </TableRow>
+          <TableHead sx={{ borderBottom: "1px solid #E1E1E1" }}>
+            <Box padding={"20px 0 20px 30px"}>
+              <Box display="flex" alignItems="center">
+                <ListAltIcon style={{ marginRight: 8, color: "#5F6FFF" }} />
+                <Title>Latest Appointment</Title>
+              </Box>
+            </Box>
           </TableHead>
           <TableBody>
             {rows.map((row) => (
               <StyledTableRow key={row.id}>
-                <TableCell>{row.id}</TableCell>
                 <TableCell>
                   <AvatarBox>
                     <StyledAvatar
-                      src={row.patientImage}
-                      alt={row.patientName}
+                      src="/doctor-avatar.jpg"
+                      alt={row.doctorName}
                     />
-                    {row.patientName}
+                    <Box>
+                      <Typography variant="h6" sx={{ color: "#555" }}>
+                        {row.doctorName}
+                      </Typography>
+                      <Typography variant="body2" sx={{ color: "#777" }}>
+                        Booking on {row.bookingDate}
+                      </Typography>
+                    </Box>
                   </AvatarBox>
                 </TableCell>
-                <TableCell>{row.age}</TableCell>
-                <TableCell>{row.dateTime}</TableCell>
                 <TableCell align="center">
                   <DeleteButton onClick={() => handleDelete(row.id)}>
                     <DeleteIcon />
@@ -115,7 +112,7 @@ function AllAponment() {
   );
 }
 
-export default AllAponment;
+export default MainDash;
 
 const StyledContainer = styled(Container)({
   marginTop: "30px",
@@ -123,8 +120,7 @@ const StyledContainer = styled(Container)({
 });
 
 const Title = styled(Typography)({
-  marginBottom: "10px",
-  fontSize: "22px",
+  fontSize: "18px",
   color: "#323232",
   fontWeight: 500,
 });
@@ -132,18 +128,17 @@ const Title = styled(Typography)({
 const StyledTableRow = styled(TableRow)({
   "&:last-child td, &:last-child th": { borderBottom: "none" },
   "&:hover": { backgroundColor: "#E2E5FF" },
-  padding: "40px",
 });
 
 const AvatarBox = styled(Box)({
   display: "flex",
   alignItems: "center",
+  gap: "20px",
 });
 
 const StyledAvatar = styled(Avatar)({
   width: 40,
   height: 40,
-  marginRight: 8,
 });
 
 const DeleteButton = styled(IconButton)({

@@ -10,6 +10,7 @@ const About = () => {
     <Box>
       <AboutBanner />
       <BottomAbout />
+      <Footer />
     </Box>
   );
 };

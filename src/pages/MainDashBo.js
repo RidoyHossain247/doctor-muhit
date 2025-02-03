@@ -1,16 +1,16 @@
 import React from "react";
+import MainDash from "../component/form/MainDash";
 import NavbarLogIn from "../component/form/NavbarLogIn";
 import DrawerLogin from "../component/form/DrawerLogin";
-import AllAponment from "../component/form/AllAponment";
 import { Box } from "@mui/material";
 
-const Allapnoint = () => {
+const MainDashBo = () => {
   return (
     <Box bgcolor={"#F8F9FD"}>
       <NavbarLogIn />
-      <DrawerLogin child={<AllAponment />} />
+      <DrawerLogin child={<MainDash />} />
     </Box>
   );
 };
 
-export default Allapnoint;
+export default MainDashBo;

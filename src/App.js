@@ -7,14 +7,13 @@ import Contact from "./pages/ContactUs";
 import SignUP from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import NavBar from "./component/form/Navbar";
-import Footer from "./component/form/Footer";
 import AllDoctors from "./pages/AllDoctors";
 import ScrollToTop from "./component/ScrollTop";
-import NavbarLogIn from "./component/form/NavbarLogIn";
 import AdminPanel from "./pages/AdminPanel";
 import AdminApoint from "./pages/Allapnoint";
 import AddDoctor from "./pages/AddDoctor";
 import DoctorList from "./pages/DoctorList";
+import MainDashBo from "./pages/MainDashBo";
 
 function App() {
   return (
@@ -32,10 +31,11 @@ function App() {
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/admin-panel" element={<AdminPanel />} />
           <Route path="/admin-apoint" element={<AdminApoint />} />
-          <Route path="/add-doctor" element={<AddDoctor />} />{" "}
+          <Route path="/add-doctor" element={<AddDoctor />} />
           <Route path="/doctor-list" element={<DoctorList />} />
+          <Route path="/main-dash" element={<MainDashBo />} />
         </Routes>
-        {/* <Footer /> */}
+        {/* */}
       </Router>
       {/* <Router>
         <ScrollToTop />

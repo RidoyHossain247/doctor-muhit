@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Box, Button, Container } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import CardsLayout from "../component/form/CardsLayout";
 import Footer from "../component/form/Footer";
+import CardLogin from "../component/form/CardLogin";
 
 const doctorCategories = [
   "All Doctors",
@@ -45,7 +45,11 @@ const AllDoctors = () => {
             </StyledButton>
           ))}
         </CategoryBox>
-        <CardsLayout selectedCategory={selectedCategory} />
+        <CardLogin
+          Title={""}
+          Top={"60px"}
+          selectedCategory={selectedCategory}
+        />
       </StyledMainBox>
       <Footer />
     </Container>
@@ -57,13 +61,22 @@ export default AllDoctors;
 const StyledMainBox = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "row",
+  [theme.breakpoints.down("sm")]: {
+    flexDirection: "column",
+  },
 }));
 
 const CategoryBox = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   gap: "17px",
-  marginTop: "100px",
+  marginTop: "90px",
+  [theme.breakpoints.down("sm")]: {
+    display: "grid",
+    gridTemplateColumns: "repeat(2, 1fr)",
+    gap: "12px",
+    marginTop: "100px",
+  },
 }));
 
 const StyledButton = styled(Button)(({ selected }) => ({
@@ -77,5 +90,8 @@ const StyledButton = styled(Button)(({ selected }) => ({
   border: selected ? "1px solid #E2E5FF" : "1px solid #B4B4B4",
   ":hover": {
     backgroundColor: selected ? "#C7D2FE" : "#F0F0F0",
+  },
+  ["@media (max-width:600px)"]: {
+    width: "100%",
   },
 }));

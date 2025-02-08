@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 import {
   AppBar,
   Box,
@@ -19,9 +19,19 @@ function NavBar() {
   const [drawerOpen, setDrawerOpen] = React.useState(false);
   const [activePage, setActivePage] = React.useState("");
 
+  useEffect(() => {
+    const savedCategory = localStorage.getItem("activePage");
+    if (savedCategory) {
+      console.log("Restoring category:", savedCategory);
+      setActivePage(savedCategory);
+    }
+  }, []);
+
   const handleActive = (page) => {
     setActivePage(page);
+    localStorage.setItem("activePage", page);
   };
+
   const navigate = useNavigate();
   const handleClickSignUp = () => {
     navigate("/sign-up");

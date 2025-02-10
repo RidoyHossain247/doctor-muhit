@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 import {
   AppBar,
   Box,
@@ -13,15 +13,25 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import { useNavigate } from "react-router-dom";
 
-const pages = ["HOME", "All DOCTORS", "ABOUT", "CONTACT"];
+const pages = ["HOME", "All DOCTORS", "ABOUT", "CONTACT", "PAY"];
 
 function NavBar() {
   const [drawerOpen, setDrawerOpen] = React.useState(false);
   const [activePage, setActivePage] = React.useState("");
 
+  useEffect(() => {
+    const savedCategory = localStorage.getItem("activePage");
+    if (savedCategory) {
+      console.log("Restoring category:", savedCategory);
+      setActivePage(savedCategory);
+    }
+  }, []);
+
   const handleActive = (page) => {
     setActivePage(page);
+    localStorage.setItem("activePage", page);
   };
+
   const navigate = useNavigate();
   const handleClickSignUp = () => {
     navigate("/sign-up");
@@ -45,6 +55,8 @@ function NavBar() {
       navigate("/about");
     } else if (page === "CONTACT") {
       navigate("/contact");
+    } else if (page === "PAY") {
+      navigate("/pay-doctors");
     }
     handleActive(page);
   };

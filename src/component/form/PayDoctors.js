@@ -43,7 +43,15 @@ const appointments = [
 function PayDoctors() {
   return (
     <Container>
-      <Grid container mt={"70px"}>
+      <Typography
+        fontSize={"24px"}
+        mt={"120px"}
+        color="#4B5563"
+        fontWeight={500}
+      >
+        My appointments
+      </Typography>
+      <Grid container mt={"20px"}>
         {appointments.map((appointment) => (
           <Grid item xs={12} key={appointment.id}>
             <Card
@@ -80,7 +88,7 @@ function PayDoctors() {
                   {appointment.specialty}
                 </Typography>
                 <Typography
-                  width={"100px"}
+                  width={"120px"}
                   variant="body2"
                   color="text.secondary"
                 >
@@ -108,8 +116,8 @@ function PayDoctors() {
                 </Button>
                 <Button
                   variant="outlined"
-                  color="secondary"
-                  sx={{ textTransform: "none" }}
+                  color="#4B5563"
+                  sx={{ textTransform: "none", border: "1px solid #BABABA" }}
                 >
                   Cancel appointment
                 </Button>

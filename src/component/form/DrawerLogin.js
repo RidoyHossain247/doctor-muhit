@@ -33,7 +33,7 @@ function DrawerLogin({ child }) {
   const navigate = useNavigate();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const [open, setOpen] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("Dashboard");
 
   useEffect(() => {
     const savedCategory = localStorage.getItem("selectedCategory");
@@ -119,7 +119,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 
 function DrawerContent({ selectedCategory, handleMenuClick }) {
   return (
-    <List sx={{ marginTop: "10px" }}>
+    <List sx={{ marginTop: "80px" }}>
       {menuItems.map(({ name, icon, route }) => (
         <ListItem
           key={name}

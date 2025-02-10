@@ -51,14 +51,14 @@ const CardLogin = ({ Title, Top }) => {
     },
     {
       image: "./images/image_388.png",
-      name: "Dr. Richard James",
+      name: "Dr. Richard ",
       title: "General Physician",
       isAvailable: true,
       route: "/doctor/richard-james",
     },
     {
       image: "./images/file (2) 1.png",
-      name: "Dr. Sarah Connor",
+      name: "Dr. Sarah ",
       title: "Dermatologist",
       isAvailable: true,
       route: "/doctor/sarah-connor",
@@ -84,7 +84,7 @@ const CardLogin = ({ Title, Top }) => {
       >
         {Title}
       </Typography>
-      <Grid container spacing={3}>
+      <Grid container spacing={2}>
         {doctorCards.map((doctor, index) => (
           <Grid key={index} item xs={6} sm={6} md={3} lg={3}>
             <Box mt={Top}>

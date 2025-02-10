@@ -127,7 +127,7 @@ function FormDoctor() {
             </Grid>
 
             <StyledButton variant="contained" color="primary">
-              Add doctor
+              Add Doctor
             </StyledButton>
           </FormContainer>
         </Box>
@@ -152,4 +152,6 @@ const StyledButton = styled(Button)({
   margin: "20px 0 0 16px",
   borderRadius: "47px",
   backgroundColor: "#5F6FFF",
+  textTransform: "none",
+  fontSize: "16px",
 });

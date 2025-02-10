@@ -13,7 +13,7 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import { useNavigate } from "react-router-dom";
 
-const pages = ["HOME", "All DOCTORS", "ABOUT", "CONTACT"];
+const pages = ["HOME", "All DOCTORS", "ABOUT", "CONTACT", "PAY"];
 
 function NavBar() {
   const [drawerOpen, setDrawerOpen] = React.useState(false);
@@ -55,6 +55,8 @@ function NavBar() {
       navigate("/about");
     } else if (page === "CONTACT") {
       navigate("/contact");
+    } else if (page === "PAY") {
+      navigate("/pay-doctors");
     }
     handleActive(page);
   };

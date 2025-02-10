@@ -15,15 +15,17 @@ import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
 import { useNavigate } from "react-router-dom";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import NavbarLogIn from "./NavbarLogIn"; // Ensure this component is imported
+import NavbarLogIn from "./NavbarLogIn";
+import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 
 const drawerWidth = 250;
 
 const menuItems = [
-  { name: "Dashboard", icon: <DashboardIcon />, route: "/admin-panel" },
+  { name: "Dashboard", icon: <DashboardIcon />, route: "/main-dash" },
   { name: "Appointments", icon: <EventNoteIcon />, route: "/admin-apoint" },
   { name: "Add Doctor", icon: <PersonAddIcon />, route: "/add-doctor" },
   { name: "Doctors List", icon: <LocalHospitalIcon />, route: "/doctor-list" },
+  { name: "Patients", icon: <EmailOutlinedIcon />, route: "/admin-panel" },
 ];
 
 function DrawerLogin({ child }) {
@@ -59,10 +61,8 @@ function DrawerLogin({ child }) {
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
 
-      {/* Navbar with Toggle Button */}
       <NavbarLogIn toggleDrawer={toggleDrawer} />
 
-      {/* Drawer for Small Screens */}
       {isSmallScreen ? (
         <MuiDrawer
           variant="temporary"
@@ -92,7 +92,6 @@ function DrawerLogin({ child }) {
         </Box>
       )}
 
-      {/* Main Content */}
       <Box
         component="main"
         sx={{
@@ -120,7 +119,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 
 function DrawerContent({ selectedCategory, handleMenuClick }) {
   return (
-    <List sx={{ marginTop: "70px" }}>
+    <List sx={{ marginTop: "10px" }}>
       {menuItems.map(({ name, icon, route }) => (
         <ListItem
           key={name}

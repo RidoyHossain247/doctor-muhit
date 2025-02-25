@@ -129,7 +129,6 @@ function TablePa() {
 
 export default TablePa;
 
-// 🔽 Styled Components নিচে রাখা হয়েছে
 const StyledContainer = styled(Container)({
   marginTop: "30px",
   padding: "0",

@@ -1,51 +1,94 @@
 import { Box, Button, Typography } from "@mui/material";
-import React, { useState } from "react";
+import React, { useReducer } from "react";
 import { Container, styled } from "@mui/system";
 import { useNavigate } from "react-router-dom";
 import FormEmail from "./FormEmail";
 import FormMainText from "./FormMainText";
-import NavBar from "./Navbar";
-import Footer from "./Footer";
+
+const initialState = {
+  email: "",
+  password: "",
+  emailError: "",
+  passwordError: "",
+};
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "SET_FIELD":
+      return {
+        ...state,
+        [action.field]: action.value,
+        [`${action.field}Error`]: "",
+      };
+    case "SET_ERROR":
+      return { ...state, [`${action.field}Error`]: action.value };
+    default:
+      return state;
+  }
+};
+
+const validateEmail = (email) => {
+  const regex = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
+  return regex.test(email);
+};
 
 const SigninLayout = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [emailError, setEmailError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
-  const validateEmail = (email) => {
-    const regex = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{3,}$/;
-    return regex.test(email);
-  };
+  const [state, dispatch] = useReducer(reducer, initialState);
   const navigate = useNavigate();
-  const handleSingIn = () => {
+
+  const handleSignUp = () => {
     navigate("/sign-up");
   };
 
   const handleSubmit = () => {
     let valid = true;
 
-    if (!email.trim()) {
-      setEmailError("Write your email or username");
+    const storedEmail = localStorage.getItem("email");
+    const storedPassword = localStorage.getItem("password");
+
+    if (!state.email.trim()) {
+      dispatch({
+        type: "SET_ERROR",
+        field: "email",
+        value: "Enter your email",
+      });
       valid = false;
-    } else if (!validateEmail(email)) {
-      setEmailError("Invalid email or username");
+    } else if (!validateEmail(state.email)) {
+      dispatch({
+        type: "SET_ERROR",
+        field: "email",
+        value: "Invalid email format",
+      });
       valid = false;
-    } else {
-      setEmailError("");
+    } else if (state.email !== storedEmail) {
+      dispatch({
+        type: "SET_ERROR",
+        field: "email",
+        value: "Email not registered",
+      });
+      valid = false;
     }
 
-    if (!password.trim()) {
-      setPasswordError("Write your password");
+    if (!state.password.trim()) {
+      dispatch({
+        type: "SET_ERROR",
+        field: "password",
+        value: "Enter your password",
+      });
       valid = false;
-    } else {
-      setPasswordError("");
     }
 
-    if (valid) {
-      console.log("Email/Username:", email);
-      console.log("Password:", password);
-
-      navigate("/main-dash");
+    if (valid && storedPassword) {
+      if (storedPassword === state.password) {
+        console.log("Login successful");
+        navigate("/main-dash");
+      } else {
+        dispatch({
+          type: "SET_ERROR",
+          field: "password",
+          value: "Incorrect password",
+        });
+      }
     }
   };
 
@@ -55,33 +98,38 @@ const SigninLayout = () => {
         <BoxWrapper>
           <Box sx={{ padding: "32px 24px" }}>
             <FormMainText
-              title={"Create Account"}
-              subTitle={"Please sign up to book appointment"}
+              title={"Sign In"}
+              subTitle={"Login to access your account"}
             />
-
             <FormEmail
               Title={"Email"}
-              plasename={"email"}
-              marignTop="40px"
-              value={email}
-              error={emailError}
-              onChange={(e) => {
-                setEmail(e.target.value);
-                setEmailError("");
-              }}
+              placeholder={"Enter your email"}
+              marginTop="40px"
+              value={state.email}
+              error={state.emailError}
+              onChange={(e) =>
+                dispatch({
+                  type: "SET_FIELD",
+                  field: "email",
+                  value: e.target.value,
+                })
+              }
               type="email"
             />
             <FormEmail
               Title="Password"
-              plasename="Enter password"
-              marignTop="10px"
-              value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-                setPasswordError("");
-              }}
-              error={passwordError}
-              type={"password"}
+              placeholder="Enter password"
+              marginTop="10px"
+              value={state.password}
+              onChange={(e) =>
+                dispatch({
+                  type: "SET_FIELD",
+                  field: "password",
+                  value: e.target.value,
+                })
+              }
+              error={state.passwordError}
+              type="password"
             />
             <Button
               fullWidth
@@ -93,10 +141,10 @@ const SigninLayout = () => {
             <Typography
               sx={{ textAlign: "start", marginTop: "10px", color: "#4B5563" }}
             >
-              Already have an account?
+              Don't have an account?
               <span
-                onClick={handleSingIn}
-                style={{ color: "blue", fontSize: "bold", cursor: "pointer" }}
+                onClick={handleSignUp}
+                style={{ color: "blue", fontWeight: "bold", cursor: "pointer" }}
               >
                 {" "}
                 Sign Up
@@ -110,6 +158,7 @@ const SigninLayout = () => {
 };
 
 export default SigninLayout;
+
 const MainBoxWrapper = styled(Box)(({ theme }) => ({
   width: "100%",
   position: "relative",

@@ -40,7 +40,7 @@ const Footer = ({ marginTop }) => {
           </Grid>
 
           {/* Company Links */}
-          <Grid item xs={12} sm={3} md={3}>
+          <Grid item xs={6} sm={3} md={3}>
             <SectionTitle>COMPANY</SectionTitle>
             <LinkWrapper>
               {pages.map((page) => (
@@ -52,7 +52,7 @@ const Footer = ({ marginTop }) => {
           </Grid>
 
           {/* Contact Information */}
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid item xs={6} sm={6} md={3}>
             <SectionTitle>GET IN TOUCH</SectionTitle>
             <ContactInfo>+1-212-456-7890</ContactInfo>
             <ContactInfo>greatstackdev@gmail.com</ContactInfo>

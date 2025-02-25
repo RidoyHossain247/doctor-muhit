@@ -5,7 +5,7 @@ const MoreButton = ({ onClick }) => {
   return (
     <Box sx={{ textAlign: "center", marginTop: "20px" }}>
       <StyledButton variant="contained" onClick={onClick}>
-        More
+        more
       </StyledButton>
     </Box>
   );
@@ -14,9 +14,13 @@ const MoreButton = ({ onClick }) => {
 export default MoreButton;
 
 const StyledButton = styled(Button)(({ theme }) => ({
-  backgroundColor: "#5F6FFF",
-  color: "#FFFFFF",
+  backgroundColor: "#EAEFFF",
+  color: "#4B5563",
   textTransform: "none",
-  borderRadius: "20px",
-  padding: "10px 50px",
+  borderRadius: "47px",
+  padding: "10px 60px",
+  boxShadow: "none",
+  marginTop: "60px",
+  fontSize: "20px",
+  fontWeight: 400,
 }));

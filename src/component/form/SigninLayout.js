@@ -44,7 +44,7 @@ const SigninLayout = () => {
     let valid = true;
 
     const storedEmail = localStorage.getItem("email");
-    const storedPassword = localStorage.getItem("password"); // সরাসরি লোকাল স্টোরেজ থেকে পাসওয়ার্ড নেবে
+    const storedPassword = localStorage.getItem("password");
 
     if (!state.email.trim()) {
       dispatch({

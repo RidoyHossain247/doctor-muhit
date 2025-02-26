@@ -1,24 +1,60 @@
 import { Box, Button, Typography } from "@mui/material";
-import React, { useState } from "react";
+import React, { useReducer, useEffect } from "react";
 import { Container, styled } from "@mui/system";
 import FormEmail from "./FormEmail";
 import FormMainText from "./FormMainText";
 import { useNavigate } from "react-router-dom";
-import NavBar from "./Navbar";
-import Footer from "./Footer";
 
-const LoginLayOut = ({ child }) => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [emailError, setEmailError] = useState("");
-  const [nameError, setNameError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
+const storedUser = JSON.parse(localStorage.getItem("user")) || {
+  name: "",
+  email: "",
+  password: "",
+};
+
+const initialState = {
+  name: storedUser.name,
+  email: storedUser.email,
+  password: storedUser.password,
+  emailError: "",
+  nameError: "",
+  passwordError: "",
+};
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "SET_FIELD":
+      return {
+        ...state,
+        [action.field]: action.value,
+        [`${action.field}Error`]: "",
+      };
+    case "SET_ERROR":
+      return { ...state, [`${action.field}Error`]: action.value };
+    default:
+      return state;
+  }
+};
+
+const validateEmail = (email) => {
+  const regex = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
+  return regex.test(email);
+};
+
+const LoginLayOut = () => {
+  const [state, dispatch] = useReducer(reducer, initialState);
   const navigate = useNavigate();
-  const validateEmail = (email) => {
-    const regex = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{3,}$/;
-    return regex.test(email);
-  };
+
+  useEffect(() => {
+    if (state.email && state.password) {
+      const userData = JSON.stringify({
+        name: state.name,
+        email: state.email,
+        password: state.password,
+      });
+
+      localStorage.setItem("user", userData);
+    }
+  }, [state.name, state.email, state.password]);
 
   const handleSingIn = () => {
     navigate("/sign-in");
@@ -26,33 +62,52 @@ const LoginLayOut = ({ child }) => {
 
   const handleSubmit = () => {
     let valid = true;
-    if (!name.trim()) {
-      setNameError("Write your Full Name");
+
+    if (!state.name.trim()) {
+      dispatch({
+        type: "SET_ERROR",
+        field: "name",
+        value: "Write your Full Name",
+      });
       valid = false;
-    } else {
-      setNameError("");
-      console.log("Name:", name);
     }
-    if (!email.trim()) {
-      setEmailError("Write your email");
-    } else if (!validateEmail(email)) {
-      setEmailError("Invalid email address");
-    } else {
-      console.log("Email:", email);
-      setEmailError("");
+    if (!state.email.trim()) {
+      dispatch({
+        type: "SET_ERROR",
+        field: "email",
+        value: "Write your email",
+      });
+      valid = false;
+    } else if (!validateEmail(state.email)) {
+      dispatch({
+        type: "SET_ERROR",
+        field: "email",
+        value: "Invalid email address",
+      });
+      valid = false;
+    }
+    if (!state.password.trim()) {
+      dispatch({
+        type: "SET_ERROR",
+        field: "password",
+        value: "Write your password",
+      });
+      valid = false;
+    } else if (state.password.length < 8) {
+      dispatch({
+        type: "SET_ERROR",
+        field: "password",
+        value: "Password must be 8 characters or more",
+      });
+      valid = false;
     }
 
-    if (!password.trim()) {
-      setPasswordError("Write your password");
-      valid = false;
-    } else if (password.length <= 8) {
-      setPasswordError("Password must be 8 characters or more");
-      valid = false;
-    } else {
-      console.log("Password:", password);
-      setPasswordError("");
+    if (valid) {
+      console.log("Account Created!");
+      navigate("/sign-in");
     }
   };
+
   return (
     <Container>
       <MainBoxWrapper>
@@ -66,36 +121,43 @@ const LoginLayOut = ({ child }) => {
               Title={"Full Name"}
               plasename={"Full Name"}
               marignTop="30px"
-              value={name}
-              error={nameError}
-              onChange={(e) => {
-                setName(e.target.value);
-                setNameError("");
-              }}
-              type=""
+              value={state.name}
+              error={state.nameError}
+              onChange={(e) =>
+                dispatch({
+                  type: "SET_FIELD",
+                  field: "name",
+                  value: e.target.value,
+                })
+              }
             />
             <FormEmail
               Title={"Email"}
               plasename={"email"}
               marignTop="10px"
-              value={email}
-              error={emailError}
-              onChange={(e) => {
-                setEmail(e.target.value);
-                setEmailError("");
-              }}
-              type=""
+              value={state.email}
+              error={state.emailError}
+              onChange={(e) =>
+                dispatch({
+                  type: "SET_FIELD",
+                  field: "email",
+                  value: e.target.value,
+                })
+              }
             />
             <FormEmail
               Title="Password"
               plasename="Enter password"
               marignTop="10px"
-              value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-                setPasswordError("");
-              }}
-              error={passwordError}
+              value={state.password}
+              onChange={(e) =>
+                dispatch({
+                  type: "SET_FIELD",
+                  field: "password",
+                  value: e.target.value,
+                })
+              }
+              error={state.passwordError}
               type={"password"}
             />
             <Button
@@ -111,7 +173,7 @@ const LoginLayOut = ({ child }) => {
               Already have an account?
               <span
                 onClick={handleSingIn}
-                style={{ color: "blue", fontSize: "bold", cursor: "pointer" }}
+                style={{ color: "blue", fontWeight: "bold", cursor: "pointer" }}
               >
                 {" "}
                 Login here
@@ -125,6 +187,7 @@ const LoginLayOut = ({ child }) => {
 };
 
 export default LoginLayOut;
+
 const MainBoxWrapper = styled(Box)(({ theme }) => ({
   width: "100%",
   position: "relative",

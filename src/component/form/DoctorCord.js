@@ -1,10 +1,8 @@
 import React from "react";
 import { Card, CardContent, Typography, Box, styled } from "@mui/material";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
-import { useNavigate } from "react-router-dom";
 
 function DoctorCard({ image, name, title, isAvailable, onClick }) {
-  const navigate = useNavigate();
   return (
     <CardWapper onClick={onClick}>
       <ImageWapper>
@@ -13,12 +11,13 @@ function DoctorCard({ image, name, title, isAvailable, onClick }) {
 
       <CardContent>
         <Box>
-          <Aviacle>
+          <Aviacle sx={{ color: isAvailable ? "#0FBF00" : "red" }}>
             <FiberManualRecordIcon
               fontSize="small"
               sx={{
                 marginRight: "8px",
                 fontSize: "12px",
+                color: isAvailable ? "#0FBF00" : "red",
               }}
             />
             {isAvailable ? "Available" : "Unavailable"}
@@ -39,7 +38,6 @@ function DoctorCard({ image, name, title, isAvailable, onClick }) {
 
 export default DoctorCard;
 const Aviacle = styled(Typography)(() => ({
-  color: "#0FBF00",
   fontWeight: 700,
   display: "flex",
   alignItems: "center",
@@ -49,7 +47,6 @@ const Aviacle = styled(Typography)(() => ({
 const CardWapper = styled(Card)(() => ({
   borderRadius: "12px",
   boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
-  overflow: "hidden",
   border: "1px solid #C9D8FF",
   cursor: "pointer",
   transition: "transform 0.3s ease",

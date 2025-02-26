@@ -6,7 +6,7 @@ import { Box } from "@mui/material";
 
 const Allapnoint = () => {
   return (
-    <Box bgcolor={"#F8F9FD"}>
+    <Box bgcolor={"#F8F9FD"} height={"100vh"}>
       <NavbarLogIn />
       <DrawerLogin child={<AllAponment />} />
     </Box>

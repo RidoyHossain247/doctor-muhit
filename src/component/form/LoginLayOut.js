@@ -5,10 +5,16 @@ import FormEmail from "./FormEmail";
 import FormMainText from "./FormMainText";
 import { useNavigate } from "react-router-dom";
 
-const initialState = {
+const storedUser = JSON.parse(localStorage.getItem("user")) || {
   name: "",
-  email: localStorage.getItem("email") || "",
+  email: "",
   password: "",
+};
+
+const initialState = {
+  name: storedUser.name,
+  email: storedUser.email,
+  password: storedUser.password,
   emailError: "",
   nameError: "",
   passwordError: "",
@@ -39,8 +45,16 @@ const LoginLayOut = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    localStorage.setItem("email", state.email);
-  }, [state.email]);
+    if (state.email && state.password) {
+      const userData = JSON.stringify({
+        name: state.name,
+        email: state.email,
+        password: state.password,
+      });
+
+      localStorage.setItem("user", userData);
+    }
+  }, [state.name, state.email, state.password]);
 
   const handleSingIn = () => {
     navigate("/sign-in");
@@ -89,9 +103,6 @@ const LoginLayOut = () => {
     }
 
     if (valid) {
-      localStorage.setItem("password", state.password);
-      localStorage.setItem("name", state.name);
-
       console.log("Account Created!");
       navigate("/sign-in");
     }

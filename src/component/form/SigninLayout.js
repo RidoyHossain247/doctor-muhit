@@ -43,8 +43,7 @@ const SigninLayout = () => {
   const handleSubmit = () => {
     let valid = true;
 
-    const storedEmail = localStorage.getItem("email");
-    const storedPassword = localStorage.getItem("password");
+    const storedUser = JSON.parse(localStorage.getItem("user")) || {};
 
     if (!state.email.trim()) {
       dispatch({
@@ -53,14 +52,16 @@ const SigninLayout = () => {
         value: "Enter your email",
       });
       valid = false;
-    } else if (!validateEmail(state.email)) {
-      dispatch({
-        type: "SET_ERROR",
-        field: "email",
-        value: "Invalid email format",
-      });
-      valid = false;
-    } else if (state.email !== storedEmail) {
+    }
+    // else if (!validateEmail(state.email)) {
+    //   dispatch({
+    //     type: "SET_ERROR",
+    //     field: "email",
+    //     value: "Invalid email format",
+    //   });
+    //   valid = false;
+    // }
+    else if (state.email !== storedUser.email) {
       dispatch({
         type: "SET_ERROR",
         field: "email",
@@ -78,16 +79,18 @@ const SigninLayout = () => {
       valid = false;
     }
 
-    if (valid && storedPassword) {
-      if (storedPassword === state.password) {
-        console.log("Login successful");
-        navigate("/main-dash");
-      } else {
+    if (valid) {
+      if (
+        state.password !== storedUser.password ||
+        !validateEmail(state.email)
+      ) {
         dispatch({
           type: "SET_ERROR",
           field: "password",
-          value: "Incorrect password",
+          value: "Incorrect Email or password",
         });
+      } else {
+        navigate("/main-dash");
       }
     }
   };
